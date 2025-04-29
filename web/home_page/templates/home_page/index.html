@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+{% load static %}
+
+<!-- Add the static files to the header block -->
+{% block header_extension %}
+<link rel="stylesheet" type="text/css" href='{% static "home_page/home_page.css" %}'>
+<script type="text/javascript" src="{% static 'home_page/home_page.js' %}"></script>
+{% endblock %}
+
+<!-- Add the pages content to the main header block -->
+{% block body_extension %}
+
+    <!-- About Me container -->
+    <div class="section-container about-container" id="about-container">
+        <div class="row w-100">
+            <div class="col col-sm-12 col-md-6 col-lg-4">
+                <div class="content-container">
+                    <img alt="Head Shot" class="head-shot-img" src="{% static 'site_pictures/head_shot.png' %}">
+                </div>
+            </div>
+            <div class="col col-sm-12 col-md-6 col-lg-8">
+                <div class="content-container">
+                    <h1>About Jeremy</h1>
+                    <h6>
+                        I am mostly self-taught. I took one non-credit class at my <br>
+                        local community college; however, most of my study has involved <br>
+                        reading books, watching videos, and just practicing writing code. <br>
+                        <br>
+                        My desire is to become a full-stack software developer. However, I <br>
+                        would also be interested in a backend-focused career. I am training <br>
+                        to be a web-based developer; however, I am open to being desktop- <br>
+                        based as well.<br>
+                        <br>
+                        I am also open to and enjoy learning new languages; however, so far my <br>
+                        my focus has been on Python, SQL, and the related stack. You can see <br>
+                        below some of the skills that I am familiar with and that I have used <br>
+                        in my portfolio projects.
+                    </h6>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br>
+    <br>
+
+    <!-- Skills container -->
+    <div class="section-container skills_container" id="skills-container">
+        <div class="w-100">
+            <h1 class="w-100 text-center">Skills</h1>
+        </div>
+        <!-- container template-->
+        <div class="w-100 logos-row">
+            {% for skill in skills %}
+            <div class="logo-parent">
+                <h3 class="skills_header">{{ skill.header }}</h3>
+                <div class="logos-container" id="{{ skill.id }}">
+                    {% for logo in skill.logos %}
+                    <img src="{% static logo %}" class="moving-logo">
+                    {% endfor %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <br>
+    <br>
+
+    <!-- Projects Me container -->
+    <div class="section-container projects-container" id="projects-container">
+        <div class="row w-100 justify-content-center">
+            <h1 class="w-100 text-center">Projects</h1>
+        </div>
+        <div class="row w-100 justify-content-center align-items-center">
+            {% for project in projects %}
+            <div class="col col-sm-12 col-md-6 col-lg-3 project-col">
+                <div class="project-row">
+                    <h6>{{ project.name }}</h6>
+                </div>
+                <div class="project-row">
+                    <img class="project-img" src="{% static project.img_url %}">
+                </div>
+                <div class="project-row">
+                    <p class="w-100 project-text text-center">
+                        {{ project.text }}
+                    </p>
+                </div>
+                <div class="project-row justify-content-around">
+                    <a class="button" href="{{ project.github_link}}">GitHub</a>
+                    <a class="button" href="{{ project.project_link }}">Project</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- Contact container -->
+     <div class="section-container contact-container">
+        <div class="row w-100 justify-content-center">
+            <h1 class="w-100 text-center">Contact Me</h1>
+        </div>
+     </div>
+
+{% endblock %}

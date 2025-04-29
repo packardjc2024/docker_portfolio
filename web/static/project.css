@@ -1,0 +1,43 @@
+.top-navbar {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    background: #c7c7cc;
+    min-height: 50px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-bottom: 1px solid black;
+    min-height: 100px;
+}
+
+.bottom-navbar {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    background: #c7c7cc;
+    min-height: 50px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-top: 1px solid rgb(0, 0, 128);
+    bottom: 0px;
+}
+
+#copyright {
+    font-size: 10px;
+}
+
+#header {
+    background: #f2f2f2;
+}
+
+.header-text {
+    color: rgb(0, 0, 128);
+}
+
+body {
+    background: #212124;
+}
