@@ -23,16 +23,16 @@
     <header class="fixed-top" id="header">
         <div class="top-navbar">
             <div class="top-navbar-left-side">
-                <a class="header-text" href="{% url 'home_page:index' %e}">
-                    <img src="{% static 'site_pictures/pod_logo.png' %}" width="30" height="30" class="d-inline-block align-top" alt="Programming on Demand Logo">
-                    Portfolio
+                <a class="img-link" href="{% url 'home_page:index' %}">
+                    <img id="pod-img" src="{% static 'site_pictures/pod_logo.png' %}" alt="Programming on Demand Logo">
                 </a>
+                <p class="header-text">Portfolio</p>
             </div>
             <div class="top-navbar-right-side">
-                <a class="header-text" href="#about-container">About Me</a>
+                <a class="header-text" href="#about-start">About</a>
                 <a class="header-text" href="#skills-container">Skills</a>
                 <a class="header-text" href="#projects-container">Projects</a>
-                <a class="header-text" href="#contact-container">Contact Me</a>
+                <a class="header-text" href="#contact-container">Contact</a>
             </div>
         </div>
     </header>
@@ -42,11 +42,11 @@
         {% endblock %}
     </main>
 
-<footer>
-    <div class="bottom-navbar">
-        <p class="header-text" id="copyright">&copy; Programming On Demand 2025</p>
-    </div>
-</footer>
+    <footer>
+        <div class="bottom-navbar">
+            <p class="header-text" id="copyright">&copy; Programming On Demand 2025</p>
+        </div>
+    </footer>
 
 </body>
 

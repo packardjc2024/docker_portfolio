@@ -1,61 +1,180 @@
-a {
-    text-decoration: none !important;
-}
-
-.content-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+/******* Start of page wide classes *******/
+.glass-container {
     border-radius: 10px;
-    height: 100%;
-    width: 100%;
-    /* background: pink; */
+    border: solid rgb(255, 255, 255, 0.5) 1px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    background: rgb(255, 255, 255, 0.3);
+    color: white;
 }
 
-.section-container {
+.centered-container {
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    padding: 5px;
     width: 100%;
+    height: 100%;
+    padding: 5px;
 }
 
-/********** About Me Container ***************/
-
-.about-container {
-    background: linear-gradient(
-        135deg, 
-        rgb(0, 64, 128), 
-        rgb(0, 64, 128, 0.8),
-        rgb(0, 64, 128),
-        rgb(0, 64, 128, 0.8)
-    );
+/******* Start Flip container ******************/
+.flip-parent {
+    width: 100%;
     min-height: 500px;
     display: flex;
-    align-items: center;
-    color: #f2f2f2;
     justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.flip-container {
+    position: absolute;
+    min-width: 300px;
+    min-height: 300px;
+    perspective: 1000px;
+    background: transparent;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .flip-card {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+  
+    transition: transform 1s;
+    transform-style: preserve-3d;
+    transform: center center;
+  }
+  
+  .flip-container:hover .flip-card {
+    transform: rotateY( 180deg ) ;
+    transition: transform 1s;
+  }
+  
+  .flip-front,
+  .flip-back {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    backface-visibility: hidden;
+  }
+  
+.flip-back {
+    transform: rotateY( 180deg );
+  }
+/***************** End flip card **********************/
+/****** End of page wide classes *************/
+
+
+/********** Start of Welcome container and typewriter **********/
+#welcome-container {
+    background: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100vh;
+    transition: height 1s ease;
+}
+
+.scroll {
+    height: 500px;
+}
+
+#welcome-container.scroll {
+    height: 500px;
+}
+
+#hello-container, #name-container {
+    color: white;
+    font-size: 60px;
+    background: transparent;
+}
+
+.caret-container{
+    border-right: 2px solid white;
+    padding: 5px;
+    min-height: 70px;
+    animation: blink-caret 0.75s step-end infinite;
+}
+
+@keyframes blink-caret{
+    from, to {border-color: transparent;}
+    50% {border-color: white;}
+}
+
+.main-container {
+    display: none;
+}
+/*********** End of Welcome container and typwriter **************/
+
+
+/********** Start of About Me Container ***************/
+.about-container {
+    min-height: 800px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.about-flip-container {
+    width: 75%;
+}
+
+.about-card {
+    min-height: 500px;
+    padding: 10px;
+}
+
+.bio-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    padding: 20px;
+    width: 100%;
+    height: 100%;
 }
 
 .head-shot-img {
     height: 300px;
     border-radius: 50%;
-    background: #f2f2f2;
-    border: 1px solid rgb(0, 0, 128);
+    border: solid rgb(255, 255, 255, 0.5) 1px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    background: rgb(255, 255, 255, 0.3);
 }
 
+@media (max-width: 992px){
+    .bio-container{
+        flex-direction: column;
+        flex-wrap: wrap;
+    }
+    .about-flip-container {
+        height: 800px;
+    }
+}
+/********** End of About Me Container ***************/
 
-/********** Skills Container ***************/
 
-
-.skills_container{
-    color: #0088cc;
+/********** Start of Skills Container ***************/
+.skills-container {
+    background: transparent;
 }
 
 .logos-row{
-    /* background: red; */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -63,20 +182,21 @@ a {
 }
 
 .logo-parent {
-    background: #212124;
+    background: rgb(21, 21, 24, 0.5);
     border-radius: 10px;
     margin: 5px;
-    border: solid #0088cc 1px;
+    border: solid rgb(255, 255, 255, 0.5) 1px;
     box-sizing: border-box;
     padding: 0px;
     min-height: 300px;
     min-width: 300px;
     display: flex;
     flex-direction: column;
+    color: white;
 }
 
 .skills_header {
-    border-bottom: solid #0088cc 1px;
+    border-bottom: solid rgb(255, 255, 255, 0.5) 1px;
     width: 100%;
     margin: 0px;
     padding: 0px;
@@ -95,9 +215,10 @@ a {
     height: 100px;
     position: absolute;
 }
+/********** End of skills container ***************/
+
 
 /*************** dynamic sizing of skills containers ********************/
-
 @media (min-width: 769px){
     /* Two columns on larger screens with larger containers */
     .logo-parent{
@@ -137,18 +258,17 @@ a {
     }
 }
 
-/******** Projects Container ********/
 
+/******** Projects Container ********/
 .projects-container {
-    background: #f2f2f2;
+    background: transparent;
     display: flex;
     justify-content: center;
     align-items: center;
-    color: navy;
+    color: white;
 }
 
 .project-col {
-    background: #212124;
     min-height: 300px;
     min-width: 300px;
     border-radius: 10px;

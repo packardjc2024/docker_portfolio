@@ -1,15 +1,23 @@
+a {
+    text-decoration: none !important;
+}
+
 .top-navbar {
     width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
     position: fixed;
-    background: #c7c7cc;
+    background: transparent;
     min-height: 50px;
     padding-left: 10px;
     padding-right: 10px;
-    border-bottom: 1px solid black;
     min-height: 100px;
+
+    border-bottom: 1px solid rgb(255, 255, 255, 0.5);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    background: rgb(255, 255, 255, 0.3);
 }
 
 .bottom-navbar {
@@ -17,27 +25,66 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    position: fixed;
-    background: #c7c7cc;
     min-height: 50px;
-    padding-left: 10px;
-    padding-right: 10px;
-    border-top: 1px solid rgb(0, 0, 128);
-    bottom: 0px;
+    margin-top: 50px;
+
+    border-top: 1px solid navy;
+    border-top: 1px solid rgb(255, 255, 255, 0.5);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    background: rgb(255, 255, 255, 0.3);
 }
 
 #copyright {
     font-size: 10px;
 }
 
-#header {
-    background: #f2f2f2;
-}
 
 .header-text {
-    color: rgb(0, 0, 128);
+    color: white;
+    font-size: 1.5em;
+    margin: 5px;
+}
+
+.top-navbar-left-side {
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+}
+
+.top-navbar-right-side {
+    margin-right: 10px;
+}
+
+/* .img-link {
+    margin-right: 10px;
+    margin-left: 10px;
+} */
+
+#pod-img {
+    margin: 0;
+    padding: 0;
+    height: 50px;
 }
 
 body {
-    background: #212124;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    background: 
+        radial-gradient(circle at 20% 30%, #005A9C, transparent 40%),
+        radial-gradient(circle at 80% 70%, #4682B4, transparent 40%),
+        radial-gradient(circle at 50% 50%, #0E3386, transparent 40%),
+        radial-gradient(circle at 30% 80%, #6F00FF, transparent 40%),
+        radial-gradient(circle at 70% 20%, #6A5ACD, transparent 40%);
+    background-blend-mode: screen;
+    background-color: midnightblue;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+#main {
+    background: transparent;
+    width: 100%;
 }
