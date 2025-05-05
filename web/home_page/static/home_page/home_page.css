@@ -8,6 +8,15 @@
     color: white;
 }
 
+.dark-glass {
+    border-radius: 10px;
+    border: solid rgb(0, 0, 0, 0.5) 1px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    background: rgb(0, 0, 0, 0.5);
+    color: white;
+}
+
 .centered-container {
     display: flex;
     justify-content: center;
@@ -29,47 +38,69 @@
 
 .flip-container {
     position: absolute;
-    min-width: 300px;
-    min-height: 300px;
+    min-width: 350px;
+    min-height: 350px;
     perspective: 1000px;
     background: transparent;
     border: none;
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 10px;
   }
   
+  /* what the actually flips are performed on */
   .flip-card {
     position: absolute;
     width: 100%;
     height: 100%;
     box-shadow: 0 0 15px rgba(0,0,0,0.1);
-  
     transition: transform 1s;
     transform-style: preserve-3d;
-    transform: center center;
   }
   
-  .flip-container:hover .flip-card {
+  /* toggleClass for half flip */
+  .half-flip {
     transform: rotateY( 180deg ) ;
     transition: transform 1s;
   }
-  
-  .flip-front,
-  .flip-back {
+
+  .flip-card.half-flip {
+    transform: rotateY( 180deg ) ;
+    transition: transform 1s;
+  }
+
+  .flip-front, .flip-back {
+    backface-visibility: hidden;
     position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+  }
+
+  .flip-back {
+    /* start the back of the card flipped */
+    transform: rotateY(180deg);
+  }
+
+  .flip-back > div {
     height: 100%;
     width: 100%;
+  }
+
+.show-content {
     display: flex;
-    align-items: center;
     justify-content: center;
-    border-radius: 5px;
-    backface-visibility: hidden;
-  }
+    align-items: center;
+}
+
+.hide-content {
+    display: none;
+}
   
-.flip-back {
-    transform: rotateY( 180deg );
-  }
 /***************** End flip card **********************/
 /****** End of page wide classes *************/
 
@@ -84,16 +115,8 @@
     margin: 0;
     padding: 0;
     width: 100%;
-    height: 100vh;
-    transition: height 1s ease;
-}
-
-.scroll {
-    height: 500px;
-}
-
-#welcome-container.scroll {
-    height: 500px;
+    height: 100%;
+    /* transition: height 1s ease; */
 }
 
 #hello-container, #name-container {
@@ -113,39 +136,71 @@
     from, to {border-color: transparent;}
     50% {border-color: white;}
 }
-
-.main-container {
-    display: none;
-}
 /*********** End of Welcome container and typwriter **************/
-
-
-/********** Start of About Me Container ***************/
-.about-container {
-    min-height: 800px;
+.about-main {
+    min-height: 75%;
+    min-width: 75%;
     display: flex;
     align-items: center;
+    flex-direction: column;
     justify-content: center;
-    width: 100%;
+    padding: 20px;
 }
 
-.about-flip-container {
-    width: 75%;
+.about-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+
+}
+
+.about-flip-parent {
+    width: 350px;
+    min-height: 350px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.about-glass {
+    border-radius: 10px;
+    border: solid rgb(255, 255, 255, 0.5) 1px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    background: rgb(255, 255, 255, 0.2);
+    color: white;
 }
 
 .about-card {
-    min-height: 500px;
-    padding: 10px;
+    min-height: 350px;
+    min-width: 350px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin: 30px;
 }
 
-.bio-container {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-around;
-    padding: 20px;
-    width: 100%;
-    height: 100%;
+.about-category {
+    color: white;
+    margin: 30px;
+    border-radius: 10px;
+}
+
+.clicked {
+    text-shadow: 0px 0px 0px yellow;
+    animation: about-glow 8s linear infinite;
+}
+
+.about-category.clicked {
+    text-shadow: 0px 0px 0px yellow;
+    animation: about-glow 8s linear infinite;
+}
+
+.about-category:hover {
+    cursor: pointer;
 }
 
 .head-shot-img {
@@ -156,6 +211,27 @@
     -webkit-backdrop-filter: blur(10px);
     background: rgb(255, 255, 255, 0.3);
 }
+
+@keyframes about-glow {
+    0% {
+      text-shadow: 0px 0px 0px yellow;
+    }
+    25% {
+      text-shadow: 0px 0px 40px yellow;
+    }
+    50% {
+      text-shadow: 0px 0px 10px yellow;
+    }
+    75% {
+        text-shadow: 0px 0px 40px yellow;
+    }
+    100% {
+        text-shadow: 0px 0px, 0px yellow;
+    }
+  }
+
+/********** Start of About Me Container ***************/
+
 
 @media (max-width: 992px){
     .bio-container{
@@ -170,19 +246,19 @@
 
 
 /********** Start of Skills Container ***************/
-.skills-container {
+/* .skills-container {
     background: transparent;
-}
+} */
 
 .logos-row{
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 350px;
+    background: transparent;
 }
 
 .logo-parent {
-    background: rgb(21, 21, 24, 0.5);
     border-radius: 10px;
     margin: 5px;
     border: solid rgb(255, 255, 255, 0.5) 1px;
@@ -209,6 +285,7 @@
     height: 100%;
     position: relative;
     overflow: hidden;
+    background: transparent;
 }
 
 .moving-logo {
@@ -309,3 +386,74 @@
     background: transparent;
     color: #0088cc;
 }
+/******** End projects contatiner ********/
+
+
+
+.section-spacer {
+    width: 100%;
+    height: calc(100vh / 2);
+}
+
+
+
+.section {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#sections-wrapper {
+    width: 100;
+    height: 100%;
+}
+
+
+
+main {
+    width: 100%;
+    height: 100%;
+}
+
+
+
+
+
+
+/* old about 
+/* .about-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.about-flip-container {
+    width: 75%;
+}
+
+.about-card {
+    min-height: 500px;
+    padding: 10px;
+}
+
+.bio-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    padding: 20px;
+    width: 100%;
+    height: 100%;
+}
+
+.head-shot-img {
+    height: 300px;
+    border-radius: 50%;
+    border: solid rgb(255, 255, 255, 0.5) 1px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    background: rgb(255, 255, 255, 0.3);
+} */

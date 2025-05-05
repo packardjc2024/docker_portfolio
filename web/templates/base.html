@@ -6,7 +6,7 @@
     <title>docker_portfolio</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap and JQuery-->
-    <script type="text/javascript" src="{% static 'jquery-3.2.1.slim.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'jquery.js' %}"></script>
     <script type="text/javascript" href="{% static 'bootstrap.bundle.min.js' %}"></script>
     <link rel="stylesheet" type=text/css href="{% static 'bootstrap.min.css' %}">
     <!-- Project level CSS and JS Files -->
@@ -18,18 +18,18 @@
     
 </head>
 
-<body>
+<body class="purple">
 
     <header class="fixed-top" id="header">
-        <div class="top-navbar">
+        <div class="top-navbar" id="top-navbar">
             <div class="top-navbar-left-side">
                 <a class="img-link" href="{% url 'home_page:index' %}">
                     <img id="pod-img" src="{% static 'site_pictures/pod_logo.png' %}" alt="Programming on Demand Logo">
                 </a>
-                <p class="header-text">Portfolio</p>
+                <a class="header-text" href="#welcome-section">Portfolio</a>
             </div>
             <div class="top-navbar-right-side">
-                <a class="header-text" href="#about-start">About</a>
+                <a class="header-text" href="#about-section">About</a>
                 <a class="header-text" href="#skills-container">Skills</a>
                 <a class="header-text" href="#projects-container">Projects</a>
                 <a class="header-text" href="#contact-container">Contact</a>
@@ -44,7 +44,7 @@
 
     <footer>
         <div class="bottom-navbar">
-            <p class="header-text" id="copyright">&copy; Programming On Demand 2025</p>
+            <p class="" id="copyright">&copy; Programming On Demand 2025</p>
         </div>
     </footer>
 

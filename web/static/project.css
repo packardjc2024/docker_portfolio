@@ -2,6 +2,10 @@ a {
     text-decoration: none !important;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 .top-navbar {
     width: 100%;
     display: flex;
@@ -28,7 +32,6 @@ a {
     min-height: 50px;
     margin-top: 50px;
 
-    border-top: 1px solid navy;
     border-top: 1px solid rgb(255, 255, 255, 0.5);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
@@ -56,35 +59,88 @@ a {
     margin-right: 10px;
 }
 
-/* .img-link {
-    margin-right: 10px;
-    margin-left: 10px;
-} */
-
 #pod-img {
     margin: 0;
     padding: 0;
     height: 50px;
 }
 
+#main {
+    background: transparent;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/********* Background related **************/
 body {
     margin: 0;
     padding: 0;
     height: 100%;
     width: 100%;
+}
+
+.blue{
     background: 
         radial-gradient(circle at 20% 30%, #005A9C, transparent 40%),
         radial-gradient(circle at 80% 70%, #4682B4, transparent 40%),
         radial-gradient(circle at 50% 50%, #0E3386, transparent 40%),
         radial-gradient(circle at 30% 80%, #6F00FF, transparent 40%),
         radial-gradient(circle at 70% 20%, #6A5ACD, transparent 40%);
-    background-blend-mode: screen;
-    background-color: midnightblue;
+    background-color: black;
     background-repeat: no-repeat;
     background-attachment: fixed;
 }
 
-#main {
-    background: transparent;
-    width: 100%;
+.green {
+    background:
+        radial-gradient(circle at 20% 30%, #006400, transparent 40%), 
+        radial-gradient(circle at 80% 70%, #00674b, transparent 40%), 
+        radial-gradient(circle at 50% 50%, #006241, transparent 40%), 
+        radial-gradient(circle at 30% 80%, #004526, transparent 40%), 
+        radial-gradient(circle at 70% 20%, #006A4E, transparent 40%); 
+    background-color: #014421;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.black {
+    background: 
+        radial-gradient(circle at 20% 30%, #301934, transparent 40%),
+        radial-gradient(circle at 80% 70%, #191970, transparent 40%),
+        radial-gradient(circle at 50% 50%, #023020, transparent 40%),
+        radial-gradient(circle at 30% 80%, #28282b, transparent 40%),
+        radial-gradient(circle at 70% 20%, #36454f, transparent 40%);
+    background-color: #000000;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    transition: all 3s ease;
+}
+
+.purple {
+    background: 
+        radial-gradient(circle at 20% 30%, #800080, transparent 40%), 
+        radial-gradient(circle at 80% 70%, #800080, transparent 40%), 
+        radial-gradient(circle at 50% 50%, #4B0082, transparent 40%), 
+        radial-gradient(circle at 30% 80%, #720e9e, transparent 40%), 
+        radial-gradient(circle at 70% 20%, #452c63, transparent 40%);
+    background-color: #000000;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+}
+
+.test-black {
+    background: 
+        radial-gradient(circle at 20% 30%, #343434, transparent 40%), 
+        radial-gradient(circle at 80% 70%, #343434, transparent 40%), 
+        radial-gradient(circle at 50% 50%, #353935, transparent 40%), 
+        radial-gradient(circle at 30% 80%, #28282b, transparent 40%), 
+        radial-gradient(circle at 70% 20%, #28282b, transparent 40%);
+    background-color: #000000;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }

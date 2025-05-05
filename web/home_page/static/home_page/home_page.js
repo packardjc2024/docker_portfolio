@@ -1,8 +1,4 @@
 $(document).ready(function(){
-    // $('#flip-card').hover(function(){
-    //     flipCard();
-    // });
-
     setTimeout(function(){
         setupAnimation();
     }, 100);
@@ -11,7 +7,6 @@ $(document).ready(function(){
         typewriter();
     }, 1000);
 });
-
 
 /******************************************************************************
 Logo animation related functions
@@ -129,23 +124,31 @@ function calculateLogoWidth(logosArray){
 /******************************************************************************
 Typewriter related functions
 *******************************************************************************/
+
 function typewriter(){
     let line1 = 'Hello, World!';
     let line2 = "I'm Jeremy.";
     let helloElement = $('#hello-container');
     let nameElement = $('#name-container');
-    let speed = 100;
-    let duration = speed * line2.length + 2000;
+    let speed = 75;
+    let duration = speed * line2.length + 1400;
     type(helloElement, line1, speed);
     setTimeout(function(){
         helloElement.removeClass('caret-container');
         nameElement.addClass('caret-container');
         type(nameElement, line2, speed);
     }, duration);
-    setInterval(function(){
-        // $('#name-container').removeClass('caret-container');
-        $('#welcome-container').attr('class', 'scroll');
+    setTimeout(() => {
+        erase(nameElement, line2, speed);
+        setTimeout(() => {
+            nameElement.removeClass('caret-container');
+            helloElement.addClass('caret-container');
+        }, duration);
     }, duration * 2);
+    setTimeout(() => {
+        erase(helloElement, line1, speed);
+    }, duration * 3 + 300);
+    setTimeout(() => typewriter(), duration * 4);
 }
 
 function type(elementObject, elementString, speed){
@@ -158,13 +161,94 @@ function type(elementObject, elementString, speed){
     }, speed);
 }
 
+function erase(elementObject, elementString, speed){
+    let index = elementString.length - 1;
+    let typeInterval = setInterval(function(){
+        if (index >= 0){
+            elementObject.html(elementString.slice(0, index));
+            index--;
+        }
+    }, speed);
+}
 
-function flipCard(){
-    if ($('#flip-front').css('display') == 'flex'){
-        $('#flip-front').css('display', 'none');
-        $('#flip-back').css('display', 'flex');
+/******************************************************************************
+About Container
+*******************************************************************************/
+let categories;
+let isFront;
+let flip;
+
+function hideContent(){
+    for (let category of categories){
+        $(`#${category}-card`).removeClass('show-content');
+        $(`#${category}-card`).addClass('hide-content');
+    }
+}
+
+$(document).ready(() => {
+    isFront = true;
+    flip = 0;
+    categories = [
+        'goals',
+        'work-experience',
+        'education'
+    ];
+    $('.about-category').on('click', function() {
+        let categoryElement = $(this);
+        aboutCardFlip(categoryElement);
+    });
+});
+
+
+function aboutCardFlip(category){
+    let categoryName = category;
+    let categoryCard = $(`#${$(category).attr('id')}-card`);
+
+    // If the click is on the already selected category
+    if (categoryName.hasClass('clicked')){
+        flip += 180;
+        categoryName.removeClass('clicked');
+        $('#about-flip-card').css({
+            'transition': 'transform 1s',
+            'transform': `rotateY(${flip}deg)`
+        });
+        hideContent();
+        isFront = true;
+        return;
+    }
+
+    // Deselect all categories
+    $('.about-card > h3').removeClass('clicked');
+    
+    // Highlight the name
+    categoryName.addClass('clicked');
+    
+    // Rotate the card based on which side is showing
+    if (isFront) {
+        flip += 180;
+        hideContent();
+        categoryCard.removeClass('hide-content');
+        categoryCard.addClass('show-content');
+        $('#about-flip-card').css({
+            'transition': 'transform 1s',
+            'transform': `rotateY(${flip}deg)`
+        });
+        isFront = false;
     } else {
-        $('#flip-front').css('display', 'flex');
-        $('#flip-back').css('display', 'none');
+        flip += 180;
+        $('#about-flip-card').css({
+            'transition': 'transform 1s',
+            'transform': `rotateY(${flip}deg)`
+        });
+        setTimeout(() => {
+            hideContent();
+            categoryCard.removeClass('hide-content');
+            categoryCard.addClass('show-content');
+        }, 500);
+        flip += 180;
+        $('#about-flip-card').css({
+            'transition': 'transform 1s',
+            'transform': `rotateY(${flip}deg)`
+        });
     }
 }
