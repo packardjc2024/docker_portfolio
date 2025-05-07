@@ -26,14 +26,45 @@
     padding: 5px;
 }
 
+.section-spacer {
+    width: 100%;
+    height: calc(100vh / 2);
+}
+
+.section-header {
+    width: 100%;
+    color: white;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.section {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.section-container {
+    width: 75%;
+    min-height: 75vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
 /******* Start Flip container ******************/
 .flip-parent {
     width: 100%;
-    min-height: 500px;
+    min-height: 350px;
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
+    margin: 0;
+    padding: 0;
 }
 
 .flip-container {
@@ -46,7 +77,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 10px;
+    padding: 0;
+    margin: 0;
   }
   
   /* what the actually flips are performed on */
@@ -57,6 +89,8 @@
     box-shadow: 0 0 15px rgba(0,0,0,0.1);
     transition: transform 1s;
     transform-style: preserve-3d;
+    padding: 0;
+    margin:0;
   }
   
   /* toggleClass for half flip */
@@ -78,7 +112,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 10px;
+    padding: 0;
+    margin: 0;
+    color: white;
   }
 
   .flip-back {
@@ -183,7 +219,7 @@
     margin: 30px;
 }
 
-.about-category {
+.about-category, .skills-category {
     color: white;
     margin: 30px;
     border-radius: 10px;
@@ -194,12 +230,12 @@
     animation: about-glow 8s linear infinite;
 }
 
-.about-category.clicked {
+.about-category.clicked, .skills-category.clicked {
     text-shadow: 0px 0px 0px yellow;
     animation: about-glow 8s linear infinite;
 }
 
-.about-category:hover {
+.about-category:hover, .skills-category:hover {
     cursor: pointer;
 }
 
@@ -246,30 +282,46 @@
 
 
 /********** Start of Skills Container ***************/
-/* .skills-container {
-    background: transparent;
-} */
-
-.logos-row{
+.skills-main {
+    width: 75%;
+    min-height: 75%;
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 350px;
-    background: transparent;
+    flex-direction: column;
 }
 
-.logo-parent {
-    border-radius: 10px;
-    margin: 5px;
-    border: solid rgb(255, 255, 255, 0.5) 1px;
-    box-sizing: border-box;
-    padding: 0px;
-    min-height: 300px;
-    min-width: 300px;
+.skills-container {
     display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    flex-direction: row;
+    padding: 10px;
+}
+
+.skills-categories-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-width: 300px;
+}
+
+.skills-flip-front {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     flex-direction: column;
     color: white;
 }
+
+
+.full-stack {
+    border-bottom: 3px solid white;
+}
+
 
 .skills_header {
     border-bottom: solid rgb(255, 255, 255, 0.5) 1px;
@@ -280,17 +332,22 @@
     box-sizing: border-box;
 }
 
+
 .logos-container {
     width: 100%;
     height: 100%;
     position: relative;
     overflow: hidden;
     background: transparent;
+    /* new */
 }
 
 .moving-logo {
-    height: 100px;
+    height: 75px;
     position: absolute;
+    background: transparent;
+    margin: 0;
+    padding: 0;
 }
 /********** End of skills container ***************/
 
@@ -323,9 +380,9 @@
 
 /* One smaller container per row for small screens */
 @media (max-width: 576px){
-    .moving-logo{
+    /* .moving-logo{
         height: 50px;
-    }
+    } */
     .logo-parent{
         width: 300px;
         height:300px;
@@ -337,26 +394,30 @@
 
 
 /******** Projects Container ********/
-.projects-container {
-    background: transparent;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
-}
-
 .project-col {
     min-height: 300px;
-    min-width: 300px;
+    width: 300px;
     border-radius: 10px;
     margin: 5px;
-    border: solid #0088cc 1px;
     color: white;
     display: flex;
     flex-direction: column;
     justify-content: center;
     padding: 5px;
+    flex: 0 0 auto;
 }
+
+.project-cards-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    overflow-x: scroll;
+    align-items: center;
+    justify-content: center;
+}
+
 
 .project-img {
     height: 200px;
@@ -388,72 +449,7 @@
 }
 /******** End projects contatiner ********/
 
+/********* Contact section *************/
 
+/********** End of contact section ******/
 
-.section-spacer {
-    width: 100%;
-    height: calc(100vh / 2);
-}
-
-
-
-.section {
-    width: 100%;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-#sections-wrapper {
-    width: 100;
-    height: 100%;
-}
-
-
-
-main {
-    width: 100%;
-    height: 100%;
-}
-
-
-
-
-
-
-/* old about 
-/* .about-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-}
-
-.about-flip-container {
-    width: 75%;
-}
-
-.about-card {
-    min-height: 500px;
-    padding: 10px;
-}
-
-.bio-container {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-around;
-    padding: 20px;
-    width: 100%;
-    height: 100%;
-}
-
-.head-shot-img {
-    height: 300px;
-    border-radius: 50%;
-    border: solid rgb(255, 255, 255, 0.5) 1px;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    background: rgb(255, 255, 255, 0.3);
-} */

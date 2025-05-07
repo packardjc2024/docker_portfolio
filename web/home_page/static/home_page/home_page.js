@@ -1,82 +1,93 @@
-$(document).ready(function(){
-    setTimeout(function(){
-        setupAnimation();
-    }, 100);
-
-    setTimeout(function(){
-        typewriter();
-    }, 1000);
-});
 
 /******************************************************************************
 Logo animation related functions
 *******************************************************************************/
-
-function setupAnimation(){
-    let containers = document.getElementsByClassName('logos-container');
-    for (let container of containers){
-        animateLogos(container);
-    }
-
+function stopAnimation(){
+    animationIds.forEach(id => cancelAnimationFrame(id));
+    animationIds = [];
 }
 
-function animateLogos(containerElement){
-// Declares all the variables and calls all functions in the correct order
-    let logoElements = containerElement.getElementsByClassName('moving-logo');
-
-    let logos = [];
-    for (let logo of logoElements){
-        logos.push({
-            'element': logo,
-            'distanceX': 2,
-            'distanceY': 2,
-            'containerWidth': containerElement.offsetWidth,
-            'containerHeight': containerElement.offsetHeight,
-            'logoHeight': calculateLogoHeight(logoElements),
-            'logoWidth': calculateLogoWidth(logoElements)
-        });
+function animateLogos(containerId){
+    let logos;
+    let containerWidth;
+    resetLogos(containerId);
+    for (let container of logoPositions){
+        if (container['containerId'] == containerId){
+            logos = container['logos'];
+            containerWidth = container['containerWidth'];
+            break;
+        } 
     }
-    
-    arrangeLogos(logos, containerElement);
-
-    setTimeout(function(){
-        for (let logo of logos){
-            moveLogo(logo, containerElement);
-        }
-    }, 5000);
+    for (let logo of logos){
+        moveLogo(logo, document.getElementById(containerId));
+    }
 }
 
 
-function arrangeLogos(logosArray, containerElement){
+function arrangeLogos(){
 // Arranges the logos' starting points based on the max size
-    let initialTop = 10;
-    let initialLeft = 10;
-    for (let i=0; i<logosArray.length; i++){
-        // Set every other logo to move the opposite direction
-        if (i % 2 != 0){
-            logosArray[i]['distanceX'] = -logosArray[i]['distanceX'];
-            logosArray[i]['distanceY'] = -logosArray[i]['distanceY'];
-        }
-        // Start a new row at the end of the container width
-        if (i != 0){
-            if (initialLeft + logosArray[i]['element'].offsetWidth >= containerElement.offsetWidth){
+// Creates a list of container objects that include a list of logo objects
+    let logoContainers = document.getElementsByClassName('logos-container');
+    for (let logoContainer of logoContainers){
+        let logos = logoContainer.getElementsByClassName('moving-logo');
+        let logoHeight = calculateLogoHeight(logos);
+        let logoWidth = calculateLogoWidth(logos);
+        let containerWidth = document.getElementById('skills-flip-back').offsetWidth;
+        let initialTop;
+        let initialLeft;
+        let logoObjects = [];
+        let distance;
+
+        for (let i=0; i<logos.length; i++){
+            distance = i % 2 == 0 ? 2 : -2;
+            // Start a new row at the end of the container width
+            if (i == 0){
                 initialLeft = 10;
-                initialTop = initialTop + logosArray[i]['logoHeight'] + 10;
+                initialTop = 10;
+             } else if (initialLeft + logoWidth >= containerWidth){
+                    initialLeft = 10;
+                    initialTop = initialTop + logoHeight + 10;
+                } else {
+                    initialLeft += logoHeight + 10;
+                }
+    
+            // store the logos starting position
+            logoObjects.push({
+                'element': logos[i],
+                'left': initialLeft + 'px',
+                'top': initialTop + 'px',
+                'distanceX': distance,
+                'distanceY': distance
+            });
+    
+            // Make the initial placement
+            logos[i].style.left = initialLeft + 'px';
+            logos[i].style.top = initialTop + 'px';
+        }
+        logoPositions.push({
+            'containerId': logoContainer.id,
+            'logos': logoObjects,
+            'containerWidth': containerWidth
+        })
+    }
+}
+
+function resetLogos(containerId){
+    for (let logoContainer of logoPositions){
+        if (logoContainer['containerId'] == containerId){
+            for (let logo of logoContainer['logos']){
+                let logoElement = logo['element'];
+                logoElement.style.left = logo['left'];
+                logoElement.style.top = logo['top'];
             }
         }
-
-        // Make the initial placement
-        logosArray[i]['element'].style.left = initialLeft + 'px';
-        logosArray[i]['element'].style.top = initialTop + 'px';
-
-        // Update the intitial left position
-        initialLeft = initialLeft + logosArray[i]['logoWidth'] + 10;
     }
 }
 
 
 function moveLogo(logoObject, containerElement){
     // Animation function that makes the logos move
+    let animationId;
     let x = logoObject['element'].offsetLeft;
     let y = logoObject['element'].offsetTop;
 
@@ -93,7 +104,8 @@ function moveLogo(logoObject, containerElement){
     logoObject['element'].style.left = x + 'px';
     logoObject['element'].style.top = y + 'px';
 
-    requestAnimationFrame(() => moveLogo(logoObject, containerElement));
+    animationId = requestAnimationFrame(() => moveLogo(logoObject, containerElement));
+    animationIds.push(animationId);
 }
 
 
@@ -124,6 +136,11 @@ function calculateLogoWidth(logosArray){
 /******************************************************************************
 Typewriter related functions
 *******************************************************************************/
+$(document).ready(function(){
+    setTimeout(function(){
+        typewriter();
+    }, 1000);
+});
 
 function typewriter(){
     let line1 = 'Hello, World!';
@@ -249,6 +266,103 @@ function aboutCardFlip(category){
         $('#about-flip-card').css({
             'transition': 'transform 1s',
             'transform': `rotateY(${flip}deg)`
+        });
+    }
+}
+
+
+/******************************************************************************
+Skills Container
+*******************************************************************************/
+let skillsCategories;
+let skillsFront;
+let skillsFlip;
+let animationIds;
+let logoPositions;
+let logoId;
+let logoObjects;
+let currentAnimationCardId;
+
+$(document).ready(() => {
+    animationIds = [];
+    logoPositions = [];
+    logoId = 1;
+    logoObjects = [];
+    skillsFront = true;
+    skillsFlip = 0;
+    skillsCategories = [
+        'front-end',
+        'back-end',
+        'web-based',
+        'misc'
+    ];
+    arrangeLogos();
+    $('.skills-category').on('click', function() {
+        let skillsCategoryElement = $(this);
+        stopAnimation();
+        skillsCardFlip(skillsCategoryElement);
+    });
+});
+
+function hideSkillsContent(){
+    for (let category of skillsCategories){
+        $(`#${category}-card`).removeClass('show-content');
+        $(`#${category}-card`).addClass('hide-content');
+    }
+}
+
+function skillsCardFlip(category){
+    let categoryName = category;
+    let categoryCardId = `${category.attr('id')}-card`
+    let categoryCard = $(`#${categoryCardId}`);
+
+    // If the click is on the already selected category
+    if (categoryName.hasClass('clicked')){
+        skillsFlip += 180;
+        categoryName.removeClass('clicked');
+        $('#skills-flip-card').css({
+            'transition': 'transform 1s',
+            'transform': `rotateY(${skillsFlip}deg)`
+        });
+        hideSkillsContent();
+        skillsFront = true;
+        return;
+    }
+
+    // Deselect all categories
+    $('.skills-categories-container > h3').removeClass('clicked');
+    
+    // Highlight the name
+    categoryName.addClass('clicked');
+
+    // Rotate the card based on which side is showing
+    if (skillsFront) {
+        skillsFlip += 180;
+        hideSkillsContent();
+        categoryCard.removeClass('hide-content');
+        categoryCard.addClass('show-content');
+        animateLogos(categoryCardId);
+        $('#skills-flip-card').css({
+            'transition': 'transform 1s',
+            'transform': `rotateY(${skillsFlip}deg)`
+        });
+        skillsFront = false;
+    } else {
+        skillsFlip += 180;
+        $('#skills-flip-card').css({
+            'transition': 'transform 1s',
+            'transform': `rotateY(${skillsFlip}deg)`
+        });
+        setTimeout(() => {
+            hideSkillsContent();
+            categoryCard.removeClass('hide-content');
+            categoryCard.addClass('show-content');
+            animateLogos(categoryCardId);
+        }, 500);
+        skillsFlip += 180;
+        $('#skills-flip-card').css({
+            'transition': 'transform 1s',
+            'transform': `rotateY(${skillsFlip}deg)`
         });
     }
 }

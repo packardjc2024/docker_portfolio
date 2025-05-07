@@ -46,24 +46,90 @@ $(document).ready(() => {
         'green',
         'black'
     ];
-    setTimeout(() => throttled = false, 3000);
+    setTimeout(() => throttled = false, 2000);
 });
 
 window.addEventListener('wheel', handleScroll, {passive: false});
 
 function handleScroll(event) {
-    // Prevent default scrolling behavior
+    // Allow horizontal scrolling
+    if (event.deltaX !== 0){
+        console.log('x - scroll');
+        return;
+    }
+
+    // Check if scrolling has been paused
+    if (throttled || event.deltaY < 20){
+        event.preventDefault();
+        return;
+    }
+
+
+    // Scroll Down
+    if (event.deltaY > 0){
+        let section = $(`#${sections[index].id}`);
+        let sectionBottom = section.offset().top + section.outerHeight(true);
+        let scrollPosition = $(window).scrollTop();
+        let windowBottom = scrollPosition + $(window).height();
+
+        console.log(section);
+        console.log(sectionBottom);
+        console.log(scrollPosition);
+        console.log(windowBottom);
+        console.log($(window).height());
+
+        let remaining = sectionBottom - windowBottom
+
+        if (remaining > 0){
+            if (remaining - event.deltaY < 0){
+                event.preventDefault();
+                $('html, body').animate({
+                    scrollTop: sectionBottom - $(window).height()
+                }, 'slow');
+                setTimeout(() => {return;}, 500);
+            } else {
+                return;
+            }
+        } else {
+            event.preventDefault();
+            index++;
+            nextSection = $(`#${sections[index].id}`);
+            moveTo = nextSection.offset().top;
+            $('html, body').animate({
+                scrollTop: moveTo
+            }, 'slow');
+        }
+    }
+
+    throttled = true;
+
+    // Set timeout to prevent mulitple quick scrolls
+    setTimeout(() => throttled = false, throttleSpeed);
+}
+
+//// have to adjust clicks on navbar to change section index
+
+
+/* original scroll
+
+function handleScroll(event) {
+    // ignore horizontal scrolls
+    if (event.deltaX !== 0) return;
+
+    // Customize vertical scrolls
     event.preventDefault();
     scrollLength = event.deltaY;
 
     // Check is scrolling is throttled or for rapid short scrolls
     if (throttled || Math.abs(scrollLength) < 20) return;
 
-    // Get the scroll direction using the event
+    // throttle to prevent multiple scrolls
     throttled = true;
-    // direction = event.deltaY > 0 ? 1 : -1;
+
+    // Get the scroll direction using the event and perform scroll
     scrollLength > 0 ? scrollDown() : scrollUp();
 
+    // Set timeout to prevent mulitple quick scrolls
     setTimeout(() => throttled = false, throttleSpeed);
 }
 
@@ -109,10 +175,10 @@ function scrollDown(){
         index--;
         nextSection = $(`#${sections[index].id}`);
         moveTo = nextSection.offset().top;
-        setTimeout(() => {
-            $('body').addClass(backgrounds[index]);
-            $('body').removeClass(backgrounds[index + 1]);
-        }, 500);
+        // setTimeout(() => {
+        //     $('body').addClass(backgrounds[index]);
+        //     $('body').removeClass(backgrounds[index + 1]);
+        // }, 500);
     } else {
         return;
     }
@@ -120,11 +186,4 @@ function scrollDown(){
         scrollTop: moveTo
     }, 'slow');
 }
-
-// $(document).ready(() => {
-//     $('body').on('mouseenter', function(){
-//         $(this).css(
-//             'animation', 'purple-animation 5s infinite alternate'
-//         );
-//     });
-// });
+    */

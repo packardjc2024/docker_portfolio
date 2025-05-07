@@ -1,33 +1,33 @@
 {% extends 'base.html' %}
 {% load static %}
 
+
 <!-- Add the static files to the header block -->
 {% block header_extension %}
 <link rel="stylesheet" type="text/css" href='{% static "home_page/home_page.css" %}'>
 <script type="text/javascript" src="{% static 'home_page/home_page.js' %}"></script>
 {% endblock %}
 
+
 <!-- Add the index's content to the main header block -->
 {% block body_extension %}
-
-<div class="sections-wrapper" id="sections-wrapper">
-
 <!-- Welcome Section -->
 <div class="section" id="welcome-section"> 
+
     <!-- Welcome container with typewriter effect -->
     <div class="welcome-container" id="welcome-container">
         <h1 id="hello-container" class="caret-container"></h1>
         <h1 id="name-container" class=""></h1>
     </div>
-<!-- Close of Welcome Section -->
-</div>
 
-<div class="section-spacer" id=""></div>
+</div>
+<div class="section-spacer"></div>
 
 <!-- About Section -->
-<div class="section" id="about-section">
-    <div class="about-main dark-glass">
-        <h1 class="text-white text-center">About Me</h1>
+<div class="section flex-column" id="about-section">
+
+    <div class="section-container dark-glass">
+        <h1 class="section-header">About Me</h1>
         <div class="about-container">
             <!-- Clickable categories list -->
             <div class="about-card">
@@ -41,18 +41,18 @@
                     <!-- Flip Card (what actually flips) -->
                     <div class="flip-card about-card" id="about-flip-card">
                         <!-- Front of flip card -->
-                        <div class="flip-front about-glass about-front" id="about-front">
+                        <div class="flip-front about-glass" id="about-front">
                             <img alt="Head Shot" class="head-shot-img" src="{% static 'site_pictures/head_shot.png' %}">
                         </div>
                         <!-- Backs of flip Card -->
                         <div class="flip-back about-glass">
-                            <div class="about-back" id="goals-card">
+                            <div class="" id="goals-card">
                                 <h1>describe my goals here</h1>
                             </div>
-                            <div class="about-back" id="work-experience-card">
+                            <div class="" id="work-experience-card">
                                 <h1>describe my work experience here</h1>
                             </div>
-                            <div class="about-back" id="education-card">
+                            <div class="" id="education-card">
                                 <h1>describe my education here</h1>
                             </div>
                         </div>
@@ -61,49 +61,92 @@
             </div>
         </div>
     </div>
-<!-- Close of About Section -->
-</div>
 
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <h2 class="text-white">test</h2>
+
+</div>
 <div class="section-spacer"></div>
 
 <!-- Skills Section -->
 <div class="section" id="skills-section">
 
-    <div class="skills-container" id="skills-container">
-        <div class="w-100">
-            <h1 class="w-100 text-center text-white">Skills</h1>
-        </div>
-        <!-- container template-->
-        <div class="w-100 logos-row">
-            {% for skill in skills %}
-            <div class="glass-container logo-parent">
-                <h3 class="skills_header">{{ skill.header }}</h3>
-                <div class="logos-container" id="{{ skill.id }}">
-                    {% for logo in skill.logos %}
-                    <img src="{% static logo %}" class="moving-logo">
-                    {% endfor %}
+    <div class="section-container dark-glass">
+        <h1 class="section-header">Skills</h1>
+        <div class="skills-container">
+            <!-- Skills flip parent -->
+            <div class="skills-flip-parent flip-parent">
+                <!-- skills flip container -->
+                <div class="skills-flip-container flip-container">
+                    <!-- skills flip card -->
+                    <div class="flip-card" id="skills-flip-card">
+                        <!-- skills flip front -->
+                        <div class="flip-front skills-flip-front about-glass">
+                            <h3 class="full-stack">Python Full-Stack Developer</h3>
+                            <h3>HTML/JS/CSS</h3>
+                            <h3>Ubuntu/Nginx/GUnicorn</h3>
+                            <h3>Python/Django</h3>
+                            <h3>SQL</h3>
+                        </div>
+                        <!-- skills flip backs -->
+                        <div class="flip-back about-glass" id="skills-flip-back">
+                            {% for skill in skills %}
+                            <div class="logos-container" id="{{ skill.card }}">
+                                {% for logo in skill.logos %}
+                                <img src="{% static logo %}" class="{{ skill.class }}">
+                                {% endfor %}
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
                 </div>
             </div>
-            {% endfor %}
+            <!-- skills categories -->
+            <div class="skills-categories-container">
+                <h3 class="skills-category" id="front-end">Front End</h3>
+                <h3 class="skills-category" id="back-end">Back End</h3>
+                <h3 class="skills-category" id="web-based">Web-based</h3>
+                <h3 class="skills-category" id="misc">Misc.</h3>
+            </div>
         </div>
     </div>
 
-    <br>
-    <br>
-
 </div>
-
 <div class="section-spacer"></div>
+
+<!-- Projects Section -->
 <div class="section" id="projects-section">
 
     <!-- Projects Me container -->
-    <div class="projects-container" id="projects-container">
-        <div class="row w-100 justify-content-center">
-            <h1 class="w-100 text-center text-white">Projects</h1>
-        </div>
-        <div class="row w-100 justify-content-center align-items-center">
+    <div class="section-container dark-glass" id="projects-container">
+        <h1 class="section-header">Projects</h1>
+        <div class="project-cards-container">
             {% for project in projects %}
-            <div class="col col-sm-12 col-md-6 col-lg-3 project-col">
+            <div class="glass-container project-col">
                 <div class="project-row">
                     <h6>{{ project.name }}</h6>
                 </div>
@@ -125,66 +168,22 @@
     </div>
 
 </div>
-
 <div class="section-spacer"></div>
+
+<!-- Contact Section -->
 <div class="section" id="contact-section">
 
     <!-- Contact container -->
-    <div class="section-container contact-container mb-0" id="contact-container">
-        <div class="row w-100 justify-content-center">
-            <h1 class="w-100 text-center text-white">Let's Talk</h1>
+    <div class="section-container dark-glass" id="contact-container">
+        <h1 class="section-header">Let's Talk</h1>
+        <div class="contact-form-container">
+            <form method="POST" action="{% url 'home_page:index' %}" id="contact-form">
+                {% csrf_token %}
+                {{ contact_form }}
+                <button type="submit">Submit</button>
+            </form>
         </div>
     </div>
+
 </div> 
-
-</div>
 {% endblock %}
-
-
-
-<!-- <div class="flip-parent">
-    <div class="flip-container">
-        <div class="flip-card">
-          <div class="flip-front">
-            Front
-          </div>
-          <div class="flip-back">
-            Back!
-          </div>
-        </div>
-    </div>
-</div> -->
-
-
-
-
-
-<!-- <div class="flip-parent">
-    <div class="flip-container about-flip-container">
-        <div class="flip-card about-card">
-            <div class="flip-front glass-container about-front">
-                <h1>About Me</h1>
-            </div>
-            <div class="flip-back glass-container">
-                <div class="bio-container">
-                <img alt="Head Shot" class="head-shot-img" src="{% static 'site_pictures/head_shot.png' %}">
-                <h6 class="text-left">
-                    I am mostly self-taught. I took one non-credit class at my <br>
-                    local community college; however, most of my study has involved <br>
-                    reading books, watching videos, and just practicing writing code. <br>
-                    <br>
-                    My desire is to become a full-stack software developer. However, I <br>
-                    would also be interested in a backend-focused career. I am training <br>
-                    to be a web-based developer; however, I am open to being desktop- <br>
-                    based as well.<br>
-                    <br>
-                    I am also open to and enjoy learning new languages; however, so far my <br>
-                    my focus has been on Python, SQL, and the related stack. You can see <br>
-                    below some of the skills that I am familiar with and that I have used <br>
-                    in my portfolio projects.
-                </h6>
-                </div>
-            </div>
-        </div>
-    </div>
-</div> -->

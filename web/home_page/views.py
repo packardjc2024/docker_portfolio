@@ -21,13 +21,13 @@ def index(request):
         skill_lower = skill.lower().replace(' ', '_')
         logos_directory = Path.joinpath(Path(settings.BASE_DIR), 'static', 'logos', skill_lower)
         context['skills'].append({
-            'header': skill,
-            'id': skill_lower,
+            'class': f'{skill_lower} moving-logo',
+            'card': f'{skill_lower.replace('_', '-')}-card',
             'logos': [f'logos/{skill_lower}/{filename}' for filename in os.listdir(logos_directory) if filename.endswith('.png')],
         })
 
-    context['projects'] = []
-    context['projects'].append({
+    context['projects'] = [
+        {
         'name': 'Portfolio',
         'img_url': 'site_pictures/portfolio_screenshot.png',
         'text': (
@@ -37,6 +37,50 @@ def index(request):
         ),
         'github_link': 'https://github.com/packardjc2024/portfolio',
         'project_link': "#",
-        })
-    
+        },
+        {
+        'name': "CSVQL",
+        'img_url': '',
+        'text': (
+
+        ),
+        'github_link': '',
+        'project_link': '',
+        },
+        {
+        'name': "CSVQL",
+        'img_url': '',
+        'text': (
+
+        ),
+        'github_link': '',
+        'project_link': '',
+        },
+        {
+        'name': "CSVQL",
+        'img_url': '',
+        'text': (
+
+        ),
+        'github_link': '',
+        'project_link': '',
+        },
+        {
+        'name': "CSVQL",
+        'img_url': '',
+        'text': (
+
+        ),
+        'github_link': '',
+        'project_link': '',
+        },
+    ]
+    if request.method == 'GET':
+        context['contact_form'] = ContactForm()
+    elif request.method == 'POST':
+        contact_form = ContactForm(request.POST)
+        if contact_form.is_valid():
+            contact_form.save()
+        else:
+            context['context_form'] = contact_form
     return render(request, 'home_page/index.html', context)
