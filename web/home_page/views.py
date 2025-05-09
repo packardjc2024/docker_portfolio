@@ -19,7 +19,7 @@ def index(request):
             "framework and PostgreSQL in Docker containers. "
             "It is running on an Ubuntu server using Nginx."
         ),
-        'github_link': 'https://github.com/packardjc2024/portfolio',
+        'github_link': 'https://github.com/packardjc2024/docker_portfolio',
         'project_link': "#",
         'alt': 'Portofolio Screenshot',
         },
