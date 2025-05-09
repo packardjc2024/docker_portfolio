@@ -54,7 +54,8 @@ SRI_ENABLED = True
 ALLOWED_HOSTS = [
     '*',
     '127.0.0.1',
-    'docker.privatesocialconnection.com',
+    'www.privatesocialconnection.com',
+    'privatesocialconnection.com'
 ]
 
 
