@@ -6,14 +6,14 @@
 
 server {
 
-	server_name www.default.com;
+	server_name www.docker.privatesocialconnection.com;
 
 	location /static/ {
-		alias /var/lib/docker/volumes/docker_test_static_volume/_data/;
+		alias /var/lib/docker/volumes/docker_portfolio_static_volume/_data/;
 	}
 
     location /media/ {
-		alias /var/lib/docker/volumes/docker_test_media_volume/_data/;
+		alias /var/lib/docker/volumes/docker_portfolio_media_volume/_data/;
 	}
 
 	location / {
