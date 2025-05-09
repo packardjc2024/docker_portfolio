@@ -10,22 +10,6 @@ import os
 # Create your views here.
 def index(request):
     context = {}
-    skills = [
-        'Back End',
-        'Front End',
-        'Web Based',
-        'Misc',
-    ]
-    context['skills'] = []
-    for skill in skills:
-        skill_lower = skill.lower().replace(' ', '_')
-        logos_directory = Path.joinpath(Path(settings.BASE_DIR), 'static', 'logos', skill_lower)
-        context['skills'].append({
-            'class': f'{skill_lower} moving-logo',
-            'card': f'{skill_lower.replace('_', '-')}-card',
-            'logos': [f'logos/{skill_lower}/{filename}' for filename in os.listdir(logos_directory) if filename.endswith('.png')],
-        })
-
     context['projects'] = [
         {
         'name': 'Portfolio',
@@ -37,42 +21,17 @@ def index(request):
         ),
         'github_link': 'https://github.com/packardjc2024/portfolio',
         'project_link': "#",
+        'alt': 'Portofolio Screenshot',
         },
         {
         'name': "CSVQL",
         'img_url': '',
         'text': (
-
+            "Coming Soon..."
         ),
         'github_link': '',
         'project_link': '',
-        },
-        {
-        'name': "CSVQL",
-        'img_url': '',
-        'text': (
-
-        ),
-        'github_link': '',
-        'project_link': '',
-        },
-        {
-        'name': "CSVQL",
-        'img_url': '',
-        'text': (
-
-        ),
-        'github_link': '',
-        'project_link': '',
-        },
-        {
-        'name': "CSVQL",
-        'img_url': '',
-        'text': (
-
-        ),
-        'github_link': '',
-        'project_link': '',
+        'alt': 'CSVQL Screenshot',
         },
     ]
     if request.method == 'GET':

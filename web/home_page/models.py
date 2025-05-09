@@ -1,8 +1,8 @@
 from django.db import models
 
 default_message = (
-    "Hello Jeremy"
-    "\nI'd like to schedule an interview with you.\n"
+    "Hello Jeremy,"
+    "\n\nI'd like to schedule an interview with you...\n\n"
 )
 
 # Create your models here.

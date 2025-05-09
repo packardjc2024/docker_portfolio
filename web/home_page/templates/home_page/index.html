@@ -12,7 +12,7 @@
 <!-- Add the index's content to the main header block -->
 {% block body_extension %}
 <!-- Welcome Section -->
-<div class="section" id="welcome-section"> 
+<div class="welcome-background" id="welcome-section"> 
 
     <!-- Welcome container with typewriter effect -->
     <div class="welcome-container" id="welcome-container">
@@ -21,166 +21,185 @@
     </div>
 
 </div>
-<div class="section-spacer"></div>
 
 <!-- About Section -->
-<div class="section flex-column" id="about-section">
+<div class="section section-background" id="about-section">
 
-    <div class="section-container dark-glass">
-        <h1 class="section-header">About Me</h1>
-        <div class="about-container">
-            <!-- Clickable categories list -->
-            <div class="about-card">
-                <h3 class="about-category" id="goals">Goals</h3>
-                <h3 class="about-category" id="work-experience">Work Experience</h3>
-                <h3 class="about-category" id="education">Education</h3>
-            </div>
-            <!-- Flip Card parent and container -->
-            <div class="about-flip-parent">
-                <div class="flip-container" id="about-flip-container">
-                    <!-- Flip Card (what actually flips) -->
-                    <div class="flip-card about-card" id="about-flip-card">
-                        <!-- Front of flip card -->
-                        <div class="flip-front about-glass" id="about-front">
-                            <img alt="Head Shot" class="head-shot-img" src="{% static 'site_pictures/head_shot.png' %}">
+    <h1 class="w-100 text-center mb-5">About Jeremy</h1>
+    <div class="about-container">
+        <!-- Head shot Card -->
+        <div class="about-card-parent" id="about-head-shot-card">
+            <img alt="Head Shot" class="head-shot-img" src="{% static 'site_pictures/head_shot.png' %}">
+        </div>
+        <!-- Goals Card -->
+        <div class="about-card-parent" id="goals-card">
+            <div class="flip-parent">
+                <div class="flip-container">
+                    <div class="flip-card about-flip-card">
+                        <div class="flip-front about-flip-front card-background" id="goals-front">
+                            <h2>Goals</h2>
                         </div>
-                        <!-- Backs of flip Card -->
-                        <div class="flip-back about-glass">
-                            <div class="" id="goals-card">
-                                <h1>describe my goals here</h1>
-                            </div>
-                            <div class="" id="work-experience-card">
-                                <h1>describe my work experience here</h1>
-                            </div>
-                            <div class="" id="education-card">
-                                <h1>describe my education here</h1>
-                            </div>
+                        <div class="flip-back about-flip-back card-background" id="goals-back">
+                            <h2>back</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Work Experience Card-->
+        <div class="about-card-parent" id="work-experience-card">
+            <div class="flip-parent">
+                <div class="flip-container">
+                    <div class="flip-card about-flip-card">
+                        <div class="flip-front about-flip-front card-background" id="work-experience-front">
+                            <h2>Work Experience</h2>
+                        </div>
+                        <div class="flip-back about-flip-back card-background" id="work-experience-back">
+                            <h2>back</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Education Card -->
+        <div class="about-card-parent" id="education-card">
+            <div class="flip-parent">
+                <div class="flip-container">
+                    <div class="flip-card about-flip-card">
+                        <div class="flip-front about-flip-front card-background" id="education-front">
+                            <h2>Education</h2>
+                        </div>
+                        <div class="flip-back about-flip-back card-background" id="education-back">
+                            <h2>back</h2>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <h2 class="text-white">test</h2>
-
 </div>
-<div class="section-spacer"></div>
 
 <!-- Skills Section -->
-<div class="section" id="skills-section">
+<div class="section section-background" id="skills-section">
 
-    <div class="section-container dark-glass">
-        <h1 class="section-header">Skills</h1>
-        <div class="skills-container">
-            <!-- Skills flip parent -->
-            <div class="skills-flip-parent flip-parent">
-                <!-- skills flip container -->
-                <div class="skills-flip-container flip-container">
-                    <!-- skills flip card -->
-                    <div class="flip-card" id="skills-flip-card">
-                        <!-- skills flip front -->
-                        <div class="flip-front skills-flip-front about-glass">
-                            <h3 class="full-stack">Python Full-Stack Developer</h3>
-                            <h3>HTML/JS/CSS</h3>
-                            <h3>Ubuntu/Nginx/GUnicorn</h3>
-                            <h3>Python/Django</h3>
-                            <h3>SQL</h3>
+    <h1 class="w-100 text-center mb-5">Python Full-Stack Developer Skills</h1>
+    <div class="skills-container">
+        
+        <!-- Front End Section -->
+        <div class="skills-card-parent">
+            <div class="flip-parent">
+                <div class="flip-container">
+                    <div class="flip-card skills-flip-card" id="front-end">
+                        <div class="flip-front skills-flip-front card-background" id="front-end-front">
+                            <h2>Front End</h2>
                         </div>
-                        <!-- skills flip backs -->
-                        <div class="flip-back about-glass" id="skills-flip-back">
-                            {% for skill in skills %}
-                            <div class="logos-container" id="{{ skill.card }}">
-                                {% for logo in skill.logos %}
-                                <img src="{% static logo %}" class="{{ skill.class }}">
-                                {% endfor %}
-                            </div>
-                            {% endfor %}
+                        <div class="flip-back skills-flip-back logos-container card-background" id="front-end-back">
+                            <img src="{% static 'logos/front_end/css_logo.png' %}" class="moving-logo">
+                            <img src="{% static 'logos/front_end/javascript_logo.png' %}" class="moving-logo">
+                            <img src="{% static 'logos/front_end/bootstrap_logo.png' %}" class="moving-logo">
+                            <img src="{% static 'logos/front_end/jquery_logo.png' %}" class="moving-logo">
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- skills categories -->
-            <div class="skills-categories-container">
-                <h3 class="skills-category" id="front-end">Front End</h3>
-                <h3 class="skills-category" id="back-end">Back End</h3>
-                <h3 class="skills-category" id="web-based">Web-based</h3>
-                <h3 class="skills-category" id="misc">Misc.</h3>
+        </div>
+        <!-- Back End Section -->
+        <div class="skills-card-parent">
+            <div class="flip-parent skills-flip-parent">
+                <div class="flip-container">
+                    <div class="flip-card skills-flip-card" id="back-end">
+                        <div class="flip-front skills-flip-front card-background" id="back-end-front">
+                            <h2>Back End</h2>
+                        </div>
+                        <div class="flip-back skills-flip-back logos-container card-background" id="back-end-back">
+                            <img src="{% static 'logos/back_end/python_logo.png' %}" class="moving-logo">
+                            <img src="{% static 'logos/back_end/postgres_logo.png' %}" class="moving-logo">
+                            <img src="{% static 'logos/back_end/sqlserver_logo.png' %}" class="moving-logo">
+                            <img src="{% static 'logos/back_end/mysql_logo.png' %}" class="moving-logo">
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
+        <!-- Web-based Section -->
+        <div class="skills-card-parent">
+            <div class="flip-parent skills-flip-parent">
+                <div class="flip-container">
+                    <div class="flip-card skills-flip-card" id="web-based">
+                        <div class="flip-front skills-flip-front card-background" id="web-based-front">
+                            <h2>Web-Based</h2>
+                        </div>
+                        <div class="flip-back skills-flip-back logos-container card-background" id="web-based-back">
+                            <img src="{% static 'logos/web_based/aws_logo.png' %}" class="moving-logo">
+                            <img src="{% static 'logos/web_based/nginx_logo.png' %}" class="moving-logo">
+                            <img src="{% static 'logos/web_based/django_logo.png' %}" class="moving-logo">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Misc Section -->
+        <div class="skills-card-parent">
+            <div class="flip-parent skills-flip-parent">
+                <div class="flip-container">
+                    <div class="flip-card skills-flip-card" id="misc">
+                        <div class="flip-front skills-flip-front card-background" id="misc-front">
+                            <h2>Misc.</h2>
+                        </div>
+                        <div class="flip-back skills-flip-back logos-container card-background" id="misc-back">
+                            <img src="{% static 'logos/misc/docker_logo.png' %}" class="moving-logo">
+                            <img src="{% static 'logos/misc/git_logo.png' %}" class="moving-logo">
+                            <img src="{% static 'logos/misc/github_logo.png' %}" class="moving-logo">
+                            <img src="{% static 'logos/misc/linux_logo.png' %}" class="moving-logo">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
+    </div>
 </div>
-<div class="section-spacer"></div>
 
 <!-- Projects Section -->
-<div class="section" id="projects-section">
+<div class="section section-background" id="projects-section">
 
-    <!-- Projects Me container -->
-    <div class="section-container dark-glass" id="projects-container">
-        <h1 class="section-header">Projects</h1>
-        <div class="project-cards-container">
-            {% for project in projects %}
-            <div class="glass-container project-col">
-                <div class="project-row">
-                    <h6>{{ project.name }}</h6>
-                </div>
-                <div class="project-row">
-                    <img class="project-img" src="{% static project.img_url %}">
-                </div>
-                <div class="project-row">
-                    <p class="w-100 project-text text-center">
-                        {{ project.text }}
-                    </p>
-                </div>
-                <div class="project-row justify-content-around">
-                    <a class="button" href="{{ project.github_link}}">GitHub</a>
-                    <a class="button" href="{{ project.project_link }}">Project</a>
-                </div>
+    <h1 class="w-100 mb-5 text-center">Projects</h1>
+    <div class="project-cards-container">
+        {% for project in projects %}
+        <div class="glass-container project-col">
+            <div class="project-row">
+                <h6>{{ project.name }}</h6>
             </div>
-            {% endfor %}
+            <div class="project-row">
+                <img class="project-img" src="{% static project.img_url %}" alt="{{ project.alt }}">
+            </div>
+            <div class="project-row">
+                <p class="w-100 project-text text-center">
+                    {{ project.text }}
+                </p>
+            </div>
+            <div class="project-row justify-content-around">
+                <a class="button" href="{{ project.github_link}}">GitHub</a>
+                <a class="button" href="{{ project.project_link }}">Project</a>
+            </div>
         </div>
+        {% endfor %}
     </div>
 
 </div>
-<div class="section-spacer"></div>
 
 <!-- Contact Section -->
-<div class="section" id="contact-section">
+<div class="section-background section" id="contact-section">
 
-    <!-- Contact container -->
-    <div class="section-container dark-glass" id="contact-container">
-        <h1 class="section-header">Let's Talk</h1>
-        <div class="contact-form-container">
+    <h1 class="w-100 mb-5 text-center">Let's Talk</h1>
+    <div class="contact-container">
+        <div class="form-container card-background">
             <form method="POST" action="{% url 'home_page:index' %}" id="contact-form">
                 {% csrf_token %}
                 {{ contact_form }}
-                <button type="submit">Submit</button>
+                <div class="w-100 d-flex justify-content-center align-items-center m-2">
+                    <button class="btn btn-primary" type="submit">Submit</button>
+                </div>
             </form>
         </div>
     </div>

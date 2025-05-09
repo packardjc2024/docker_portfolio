@@ -9,45 +9,45 @@ html {
 }
 
 .top-navbar {
-    width: 100%;
+    width: 95%;
     display: flex;
     justify-content: space-between;
     align-items: center;
     position: fixed;
-    background: transparent;
     min-height: 50px;
     padding-left: 10px;
     padding-right: 10px;
     min-height: 100px;
-
-    border-bottom: 1px solid rgb(255, 255, 255, 0.5);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    background: rgb(255, 255, 255, 0.3);
+    border-radius: 20px;
+    top: 10px;
+    left: 50%;
+    transform: translate(-50%);
+    z-index: 1000;
 }
 
-.bottom-navbar {
+.navbar-background {
+    /* background: #536493; */
+    background: rgb(191, 129, 105);
+}
+
+.bottom-navbar, footer {
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 50px;
-    /* margin-top: 50px; */
     margin: 0;
-
-    border-top: 1px solid rgb(255, 255, 255, 0.5);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    background: rgb(255, 255, 255, 0.3);
+    background: rgb(191, 129, 105);
 }
 
 #copyright {
     font-size: 10px;
+    color: white;
 }
 
 
 .header-text {
-    color: white;
+    color: rgb(206, 206, 206);
     font-size: 1.5em;
     margin: 5px;
 }
@@ -74,6 +74,10 @@ main {
     height: 100%;
     margin: 0;
     padding: 0;
+    display: flex;
+    /* justify-content: center; */
+    flex-direction: column;
+    align-items: center;
 }
 
 
@@ -83,6 +87,12 @@ body {
     padding: 0;
     height: 100%;
     width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    /* background: #efefef */
+    background: url('/static/site_pictures/background.png');
 }
 
 .blue{
@@ -145,4 +155,29 @@ body {
     background-color: #000000;
     background-repeat: no-repeat;
     background-attachment: fixed;
+}
+
+
+/* .welcome-background {
+    background:
+        radial-gradient(circle at 20% 30%, #536493, transparent 40%), 
+        radial-gradient(circle at 80% 70%, #536493, transparent 40%), 
+        radial-gradient(circle at 50% 50%, #5ab9ea, transparent 40%), 
+        radial-gradient(circle at 30% 80%, #6a9c89, transparent 40%), 
+        radial-gradient(circle at 70% 20%, #6a9c89, transparent 40%);
+    background-color: #efefef;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+} */
+
+.welcome-background {
+    background:
+    radial-gradient(circle at 20% 30%, rgb(76, 145, 208), transparent 40%), 
+    radial-gradient(circle at 80% 70%, rgb(145, 215, 254), transparent 40%), 
+    radial-gradient(circle at 50% 50%, rgb(191, 129, 105), transparent 40%), 
+    radial-gradient(circle at 30% 80%, rgb(206, 206, 206), transparent 40%), 
+    radial-gradient(circle at 70% 20%, rgb(95, 141, 75), transparent 40%);
+background-color: rgb(28, 28, 28);
+background-repeat: no-repeat;
+background-attachment: fixed;
 }

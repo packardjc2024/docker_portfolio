@@ -1,3 +1,11 @@
+$(document).ready(() => {
+    $('#welcome-section').css('height', '100vh');
+    setTimeout(() => {
+        $('#welcome-section').animate({
+            height: '500px'
+        }, 2000)
+    }, 5000);
+})
 
 /******************************************************************************
 Logo animation related functions
@@ -32,7 +40,8 @@ function arrangeLogos(){
         let logos = logoContainer.getElementsByClassName('moving-logo');
         let logoHeight = calculateLogoHeight(logos);
         let logoWidth = calculateLogoWidth(logos);
-        let containerWidth = document.getElementById('skills-flip-back').offsetWidth;
+        // let containerWidth = document.getElementById('skills-flip-back').offsetWidth;
+        let containerWidth = logoContainer.offsetWidth;
         let initialTop;
         let initialLeft;
         let logoObjects = [];
@@ -188,92 +197,8 @@ function erase(elementObject, elementString, speed){
     }, speed);
 }
 
-/******************************************************************************
-About Container
-*******************************************************************************/
-let categories;
-let isFront;
-let flip;
-
-function hideContent(){
-    for (let category of categories){
-        $(`#${category}-card`).removeClass('show-content');
-        $(`#${category}-card`).addClass('hide-content');
-    }
-}
-
-$(document).ready(() => {
-    isFront = true;
-    flip = 0;
-    categories = [
-        'goals',
-        'work-experience',
-        'education'
-    ];
-    $('.about-category').on('click', function() {
-        let categoryElement = $(this);
-        aboutCardFlip(categoryElement);
-    });
-});
 
 
-function aboutCardFlip(category){
-    let categoryName = category;
-    let categoryCard = $(`#${$(category).attr('id')}-card`);
-
-    // If the click is on the already selected category
-    if (categoryName.hasClass('clicked')){
-        flip += 180;
-        categoryName.removeClass('clicked');
-        $('#about-flip-card').css({
-            'transition': 'transform 1s',
-            'transform': `rotateY(${flip}deg)`
-        });
-        hideContent();
-        isFront = true;
-        return;
-    }
-
-    // Deselect all categories
-    $('.about-card > h3').removeClass('clicked');
-    
-    // Highlight the name
-    categoryName.addClass('clicked');
-    
-    // Rotate the card based on which side is showing
-    if (isFront) {
-        flip += 180;
-        hideContent();
-        categoryCard.removeClass('hide-content');
-        categoryCard.addClass('show-content');
-        $('#about-flip-card').css({
-            'transition': 'transform 1s',
-            'transform': `rotateY(${flip}deg)`
-        });
-        isFront = false;
-    } else {
-        flip += 180;
-        $('#about-flip-card').css({
-            'transition': 'transform 1s',
-            'transform': `rotateY(${flip}deg)`
-        });
-        setTimeout(() => {
-            hideContent();
-            categoryCard.removeClass('hide-content');
-            categoryCard.addClass('show-content');
-        }, 500);
-        flip += 180;
-        $('#about-flip-card').css({
-            'transition': 'transform 1s',
-            'transform': `rotateY(${flip}deg)`
-        });
-    }
-}
-
-
-/******************************************************************************
-Skills Container
-*******************************************************************************/
 let skillsCategories;
 let skillsFront;
 let skillsFlip;
@@ -282,6 +207,7 @@ let logoPositions;
 let logoId;
 let logoObjects;
 let currentAnimationCardId;
+let isFront;
 
 $(document).ready(() => {
     animationIds = [];
@@ -296,73 +222,49 @@ $(document).ready(() => {
         'web-based',
         'misc'
     ];
+    isFront = {
+        'front-end': true,
+        'back-end': true,
+        'web-based': true,
+        'misc': true
+    }
+    skillsFlip = {
+        'front-end': 0,
+        'back-end': 0,
+        'web-based': 0,
+        'misc': 0
+    }
     arrangeLogos();
-    $('.skills-category').on('click', function() {
-        let skillsCategoryElement = $(this);
-        stopAnimation();
-        skillsCardFlip(skillsCategoryElement);
+    $('.skills-flip-card').on('click', function() {
+        skillsCardFlip($(this));
     });
 });
 
-function hideSkillsContent(){
-    for (let category of skillsCategories){
-        $(`#${category}-card`).removeClass('show-content');
-        $(`#${category}-card`).addClass('hide-content');
-    }
-}
 
 function skillsCardFlip(category){
-    let categoryName = category;
-    let categoryCardId = `${category.attr('id')}-card`
-    let categoryCard = $(`#${categoryCardId}`);
-
-    // If the click is on the already selected category
-    if (categoryName.hasClass('clicked')){
-        skillsFlip += 180;
-        categoryName.removeClass('clicked');
-        $('#skills-flip-card').css({
-            'transition': 'transform 1s',
-            'transform': `rotateY(${skillsFlip}deg)`
-        });
-        hideSkillsContent();
-        skillsFront = true;
-        return;
+    let tempFront = isFront[category.attr('id')];
+    stopAnimation();
+    // Make sure all cards are flipped to the front
+    for (let card of skillsCategories){
+        if (!isFront[card]){
+            skillsFlip[card] += 180;
+            isFront[card] = true;
+            $(`#${card}`).css({
+                'transition': 'transform 1s',
+                'transform': `rotateY(${skillsFlip[card]}deg)`
+            });
+        }
     }
-
-    // Deselect all categories
-    $('.skills-categories-container > h3').removeClass('clicked');
     
-    // Highlight the name
-    categoryName.addClass('clicked');
-
-    // Rotate the card based on which side is showing
-    if (skillsFront) {
-        skillsFlip += 180;
-        hideSkillsContent();
-        categoryCard.removeClass('hide-content');
-        categoryCard.addClass('show-content');
-        animateLogos(categoryCardId);
-        $('#skills-flip-card').css({
+    // If the card was already facing front
+    if (tempFront){
+        skillsFlip[category.attr('id')] += 180;
+        resetLogos(`${category.attr('id')}-back`);
+        animateLogos(`${category.attr('id')}-back`);
+        isFront[category.attr('id')] = false;
+        category.css({
             'transition': 'transform 1s',
-            'transform': `rotateY(${skillsFlip}deg)`
-        });
-        skillsFront = false;
-    } else {
-        skillsFlip += 180;
-        $('#skills-flip-card').css({
-            'transition': 'transform 1s',
-            'transform': `rotateY(${skillsFlip}deg)`
-        });
-        setTimeout(() => {
-            hideSkillsContent();
-            categoryCard.removeClass('hide-content');
-            categoryCard.addClass('show-content');
-            animateLogos(categoryCardId);
-        }, 500);
-        skillsFlip += 180;
-        $('#skills-flip-card').css({
-            'transition': 'transform 1s',
-            'transform': `rotateY(${skillsFlip}deg)`
+            'transform': `rotateY(${skillsFlip[category.attr('id')]}deg)`
         });
     }
 }
