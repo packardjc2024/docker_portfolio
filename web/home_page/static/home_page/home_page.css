@@ -411,7 +411,7 @@ h1, h2, h3, h6 p {
 @media(max-width: 762px){
     .section {
         width: 100%;
-        margin: 0 0 20px 0 !important;
+        margin: 0 0 40px 0 !important;
         padding: 0 !important;
     }
     .about-flip-card, .skills-flip-card{
@@ -430,7 +430,7 @@ h1, h2, h3, h6 p {
     .project-cards-container {
         width:100% !important;
         margin: 0;
-        padding: 5px 5px 0 0;
+        padding: 5px;
         display: flex;
         flex-direction: column;
         flex-wrap: wrap;
@@ -443,7 +443,7 @@ h1, h2, h3, h6 p {
         width: 100% !important;
         background: blue;
         padding: 0;
-        margin: 0 0 10px 0;
+        margin: 0 0 2px 0;
         flex: 0 0 100% !important;
 
     }
