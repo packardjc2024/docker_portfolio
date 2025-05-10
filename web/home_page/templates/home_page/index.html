@@ -179,8 +179,12 @@
                 </p>
             </div>
             <div class="project-row justify-content-around">
+                {% if project.project_link %}
                 <a class="button" href="{{ project.github_link}}">GitHub</a>
                 <a class="button" href="{{ project.project_link }}">Project</a>
+                {% else %}
+                <a class="button" href="{{ project.github_link}}">GitHub</a>
+                {% endif %}
             </div>
         </div>
         {% endfor %}
