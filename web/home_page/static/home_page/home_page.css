@@ -407,8 +407,8 @@ h1, h2, h3, h6 p {
 @media(max-width: 762px){
     .section {
         width: 100%;
-        margin-right: 5px;
-        margin-left: 5px;
+        margin-right: 0;
+        margin-left: 0;
     }
     .about-flip-card, .skills-flip-card{
         width:300px;
@@ -430,5 +430,8 @@ h1, h2, h3, h6 p {
         overflow-x: hidden;
         align-items: center;
         justify-content: center;
+    }
+    body {
+        background-repeat: repeat;
     }
 }
