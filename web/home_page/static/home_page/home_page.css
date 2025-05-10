@@ -425,6 +425,8 @@ h1, h2, h3, h6 p {
     }
     .project-cards-container {
         width:100%;
+        margin: 0;
+        padding:0;
         display: flex;
         flex-direction: column;
         flex-wrap: wrap;
@@ -435,8 +437,8 @@ h1, h2, h3, h6 p {
     .project-col{
         width: 100%;
         padding: 5px;
-        min-height: 300px;
-        min-width: 300px;
+        min-height: 200px;
+        min-width: 200px;
 
     }
     body {
