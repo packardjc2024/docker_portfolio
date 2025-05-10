@@ -1,3 +1,24 @@
+$(document).ready(() => {
+    $('#menu-button').on('click', dropMenu);
+    $('.section-link').on('click', () => {
+        menuClick($(this));
+    });
+});
+
+function dropMenu(menuName){
+    if ($('#dropdown-container').css('display') === 'none'){
+        $('#dropdown-container').css('display', 'flex');
+    } else {
+        $('#dropdown-container').css('display', 'none');
+    }
+}
+
+function menuClick(jQueryLink){
+    if ($('#dropdown-container').css('display') === 'flex'){
+        $('#dropdown-container').css('display', 'none');
+    }
+}
+
 // $(document).ready(function(){
 //     changeHeaderHeight();
 //     changeFooterHeight();

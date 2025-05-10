@@ -197,8 +197,6 @@ function erase(elementObject, elementString, speed){
     }, speed);
 }
 
-
-
 let skillsCategories;
 let skillsFront;
 let flipDegrees;

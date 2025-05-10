@@ -61,9 +61,29 @@ html {
     margin-right: 10px;
 }
 
-.top-navbar-right-side-small{
+#dropdown-navbar{
     display: none;
 }
+
+.dropdown-parent{
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-container{
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    min-width: 160px;
+    right: 0;
+    z-index: 1;
+    background: rgb(103, 153, 208);
+    color: rgb(206, 206, 205);
+    border-radius: 10px;
+}
+
 #pod-img {
     margin: 0;
     padding: 0;
@@ -105,4 +125,17 @@ body {
     background-color: rgb(28, 28, 28);
     background-repeat: no-repeat;
     background-attachment: scroll;
+}
+
+#menu-button:hover{
+    cursor: pointer;
+}
+
+@media (max-width: 762px){
+    #dropdown-navbar{
+        display: block;
+    }
+    #normal-navbar{
+        display: none;
+    }
 }

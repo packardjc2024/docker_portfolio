@@ -28,14 +28,22 @@
                 </a>
                 <a class="header-text section-link" href="#welcome-section">Portfolio</a>
             </div>
-            <div class="top-navbar-right-side-large">
+            <!-- Medium screen and up navbar -->
+            <div class="top-navbar-right-side-large" id="normal-navbar">
                 <a class="header-text section-link" href="#about-section">About</a>
                 <a class="header-text section-link" href="#skills-section">Skills</a>
                 <a class="header-text section-link" href="#projects-section">Projects</a>
                 <a class="header-text section-link" href="#contact-section">Contact</a>
             </div>
-            <div class="top-navbar-right-side-small">
-                <img src="{% static 'site_pictures/menu.svg' %}" height="30px">
+            <!-- Small screen navbar -->
+            <div class="top-navbar-right-side-small dropdown-parent" id="dropdown-navbar">
+                <img src="{% static 'site_pictures/menu.svg' %}" height="30px" id="menu-button">
+                <div class="dropdown-container" id="dropdown-container">
+                    <a class="header-text section-link" href="#about-section">About</a>
+                    <a class="header-text section-link" href="#skills-section">Skills</a>
+                    <a class="header-text section-link" href="#projects-section">Projects</a>
+                    <a class="header-text section-link" href="#contact-section">Contact</a>
+                </div>
             </div>
         </div>
     </header>
