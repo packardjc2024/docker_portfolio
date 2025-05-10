@@ -10,6 +10,7 @@ import os
 # Create your views here.
 def index(request):
     context = {}
+    context['form_submitted'] = False
     context['projects'] = [
         {
         'name': 'Portfolio',
@@ -40,6 +41,7 @@ def index(request):
         contact_form = ContactForm(request.POST)
         if contact_form.is_valid():
             contact_form.save()
+            context['form_submitted'] = True
         else:
             context['context_form'] = contact_form
     return render(request, 'home_page/index.html', context)

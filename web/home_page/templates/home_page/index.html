@@ -194,6 +194,7 @@
     <h1 class="w-100 mb-5 text-center">Let's Talk</h1>
     <div class="contact-container">
         <div class="form-container card-background">
+            {% if not form_submitted %}
             <form method="POST" action="{% url 'home_page:index' %}" id="contact-form">
                 {% csrf_token %}
                 {{ contact_form }}
@@ -201,6 +202,9 @@
                     <button class="btn btn-primary" type="submit">Submit</button>
                 </div>
             </form>
+            {% else %}
+            <h6>Thank you for your interest. I will get in touch with you shortly!</h6>
+            {% endif %}
         </div>
     </div>
 
