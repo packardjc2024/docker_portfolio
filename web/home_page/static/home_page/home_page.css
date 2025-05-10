@@ -409,6 +409,9 @@ h1, h2, h3, h6 p {
 
 /* optimize for phones */
 @media(max-width: 762px){
+    #welcome-section{
+        margin-bottom: 40px;
+    }
     .section {
         width: 100%;
         margin: 0 0 40px 0 !important;
@@ -425,7 +428,7 @@ h1, h2, h3, h6 p {
         padding: 0;
     }
     .head-shot-img{
-        height: 300px;
+        width: 96%;
     }
     .project-cards-container {
         width:100% !important;
@@ -437,11 +440,9 @@ h1, h2, h3, h6 p {
         overflow-x: hidden;
         align-items: stretch;
         justify-content: flex-start;
-        background: red;
     }
     .project-col{
         width: 100% !important;
-        background: blue;
         padding: 0;
         margin: 0 0 2px 0;
         flex: 0 0 100% !important;
