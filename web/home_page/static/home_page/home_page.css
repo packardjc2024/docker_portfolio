@@ -428,7 +428,7 @@ h1, h2, h3, h6 p {
         padding: 0;
     }
     .head-shot-img{
-        width: 200px;
+        height: 300px;
     }
     .project-cards-container {
         width:100% !important;
@@ -447,6 +447,9 @@ h1, h2, h3, h6 p {
         margin: 10px 0 10px 0;
         flex: 0 0 100% !important;
 
+    }
+    .proj-img{
+        width: 96%;
     }
     body {
         background-repeat: repeat;
