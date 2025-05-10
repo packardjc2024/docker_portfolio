@@ -431,8 +431,8 @@ h1, h2, h3, h6 p {
         flex-direction: column;
         flex-wrap: wrap;
         overflow-x: hidden;
-        align-items: center;
-        justify-content: center;
+        align-items: stretch;
+        justify-content: flex-start;
         background: red;
     }
     .project-col{
