@@ -6,6 +6,7 @@ html {
     scroll-behavior: smooth;
     margin: 0;
     padding: 0;
+    background: black;
 }
 
 .top-navbar {
@@ -102,13 +103,3 @@ body {
     background-repeat: no-repeat;
     background-attachment: scroll;
 }
-
-/* .background{
-    height: 100%;
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    background: url('/static/site_pictures/background.png');
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-} */
