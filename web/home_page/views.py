@@ -25,6 +25,20 @@ def index(request):
         'alt': 'Portofolio Screenshot',
         },
         {
+        'name': "Docker Setup",
+        'img_url': 'site_pictures/docker_setup_screenshot.png',
+        'text': (
+            "This app automates setting up a new Django/Postgres "
+            "dockerized app. All you have to do is enter in the secrets "
+            "necessary for the app and the app will encrypt the secrets, "
+            "create the Django, Postgres database, and docker files all "
+            "for you. Spinning up a new dockerized app only takes seconds!"
+        ),
+        'github_link': 'https://github.com/packardjc2024/docker_setup',
+        'project_link': False,
+        'alt': 'Docker Setup Screenshot',
+        },
+        {
         'name': "CSVQL",
         'img_url': '',
         'text': (
