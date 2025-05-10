@@ -148,12 +148,10 @@
     padding-top: 100px;
     padding-bottom:100px;
     width: 100%;
-    min-height: 600px;
+    min-height: 400px;
     display: flex;
     justify-content: center;
     align-items: center;
-    /* border-bottom-left-radius: 10%;
-    border-bottom-right-radius: 10%; */
 }
 
 #welcome-container {
@@ -384,6 +382,7 @@
 
 .project-img {
     height: 200px;
+    border-radius: 6px;
 }
 
 .project-row {

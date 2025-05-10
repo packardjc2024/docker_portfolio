@@ -2,7 +2,7 @@ $(document).ready(() => {
     $('#welcome-section').css('height', '100vh');
     setTimeout(() => {
         $('#welcome-section').animate({
-            height: '500px'
+            height: '400px'
         }, 2000)
     }, 5000);
 })

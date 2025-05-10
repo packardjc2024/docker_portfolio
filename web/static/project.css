@@ -26,7 +26,6 @@ html {
 }
 
 .navbar-background {
-    /* background: #536493; */
     background: rgb(191, 129, 105);
 }
 
@@ -42,7 +41,6 @@ html {
 
 #copyright {
     font-size: 10px;
-    color: white;
 }
 
 
@@ -75,13 +73,10 @@ main {
     margin: 0;
     padding: 0;
     display: flex;
-    /* justify-content: center; */
     flex-direction: column;
     align-items: center;
 }
 
-
-/********* Background related **************/
 body {
     margin: 0;
     padding: 0;
@@ -91,93 +86,19 @@ body {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    /* background: #efefef */
     background: url('/static/site_pictures/background.png');
-}
-
-.blue{
-    background: 
-        radial-gradient(circle at 20% 30%, #005A9C, transparent 40%),
-        radial-gradient(circle at 80% 70%, #4682B4, transparent 40%),
-        radial-gradient(circle at 50% 50%, #0E3386, transparent 40%),
-        radial-gradient(circle at 30% 80%, #6F00FF, transparent 40%),
-        radial-gradient(circle at 70% 20%, #6A5ACD, transparent 40%);
-    background-color: black;
     background-repeat: no-repeat;
     background-attachment: fixed;
 }
-
-.green {
-    background:
-        radial-gradient(circle at 20% 30%, #006400, transparent 40%), 
-        radial-gradient(circle at 80% 70%, #00674b, transparent 40%), 
-        radial-gradient(circle at 50% 50%, #006241, transparent 40%), 
-        radial-gradient(circle at 30% 80%, #004526, transparent 40%), 
-        radial-gradient(circle at 70% 20%, #006A4E, transparent 40%); 
-    background-color: #014421;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-}
-
-.black {
-    background: 
-        radial-gradient(circle at 20% 30%, #301934, transparent 40%),
-        radial-gradient(circle at 80% 70%, #191970, transparent 40%),
-        radial-gradient(circle at 50% 50%, #023020, transparent 40%),
-        radial-gradient(circle at 30% 80%, #28282b, transparent 40%),
-        radial-gradient(circle at 70% 20%, #36454f, transparent 40%);
-    background-color: #000000;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    transition: all 3s ease;
-}
-
-.purple {
-    background: 
-        radial-gradient(circle at 20% 30%, #800080, transparent 40%), 
-        radial-gradient(circle at 80% 70%, #800080, transparent 40%), 
-        radial-gradient(circle at 50% 50%, #4B0082, transparent 40%), 
-        radial-gradient(circle at 30% 80%, #720e9e, transparent 40%), 
-        radial-gradient(circle at 70% 20%, #452c63, transparent 40%);
-    background-color: #000000;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-
-}
-
-.test-black {
-    background: 
-        radial-gradient(circle at 20% 30%, #343434, transparent 40%), 
-        radial-gradient(circle at 80% 70%, #343434, transparent 40%), 
-        radial-gradient(circle at 50% 50%, #353935, transparent 40%), 
-        radial-gradient(circle at 30% 80%, #28282b, transparent 40%), 
-        radial-gradient(circle at 70% 20%, #28282b, transparent 40%);
-    background-color: #000000;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-}
-
-
-/* .welcome-background {
-    background:
-        radial-gradient(circle at 20% 30%, #536493, transparent 40%), 
-        radial-gradient(circle at 80% 70%, #536493, transparent 40%), 
-        radial-gradient(circle at 50% 50%, #5ab9ea, transparent 40%), 
-        radial-gradient(circle at 30% 80%, #6a9c89, transparent 40%), 
-        radial-gradient(circle at 70% 20%, #6a9c89, transparent 40%);
-    background-color: #efefef;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-} */
 
 .welcome-background {
     background:
-    radial-gradient(circle at 20% 30%, rgb(76, 145, 208), transparent 40%), 
-    radial-gradient(circle at 80% 70%, rgb(145, 215, 254), transparent 40%), 
-    radial-gradient(circle at 50% 50%, rgb(191, 129, 105), transparent 40%), 
-    radial-gradient(circle at 30% 80%, rgb(206, 206, 206), transparent 40%), 
-    radial-gradient(circle at 70% 20%, rgb(95, 141, 75), transparent 40%);
-background-color: rgb(28, 28, 28);
-background-repeat: no-repeat;
-background-attachment: fixed;
+        radial-gradient(circle at 20% 30%, rgb(76, 145, 208), transparent 40%), 
+        radial-gradient(circle at 80% 70%, rgb(145, 215, 254), transparent 40%), 
+        radial-gradient(circle at 50% 50%, rgb(191, 129, 105), transparent 40%), 
+        radial-gradient(circle at 30% 80%, rgb(206, 206, 206), transparent 40%), 
+        radial-gradient(circle at 70% 20%, rgb(95, 141, 75), transparent 40%);
+    background-color: rgb(28, 28, 28);
+    background-repeat: no-repeat;
+    background-attachment: scroll;
 }
