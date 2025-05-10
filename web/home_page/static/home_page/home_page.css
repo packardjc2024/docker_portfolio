@@ -409,6 +409,8 @@ h1, h2, h3, h6 p {
         width: 100%;
         margin-right: 0;
         margin-left: 0;
+        padding-right: 0;
+        padding-left: 0;
     }
     .about-flip-card, .skills-flip-card{
         width:300px;
