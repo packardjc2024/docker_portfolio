@@ -431,7 +431,10 @@ h1, h2, h3, h6 p {
         align-items: center;
         justify-content: center;
     }
+    .project-col{
+
+    }
     body {
-        background-repeat: repeat;
+        background-size: cover;
     }
 }
