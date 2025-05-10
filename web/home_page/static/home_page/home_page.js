@@ -201,13 +201,14 @@ function erase(elementObject, elementString, speed){
 
 let skillsCategories;
 let skillsFront;
-let skillsFlip;
+let flipDegrees;
 let animationIds;
 let logoPositions;
 let logoId;
 let logoObjects;
 let currentAnimationCardId;
 let isFront;
+let aboutFlip;
 
 $(document).ready(() => {
     animationIds = [];
@@ -226,45 +227,65 @@ $(document).ready(() => {
         'front-end': true,
         'back-end': true,
         'web-based': true,
-        'misc': true
+        'misc': true,
+        'goals': true,
+        'work-experience': true,
+        'education': true,
     }
-    skillsFlip = {
+    flipDegrees = {
         'front-end': 0,
         'back-end': 0,
         'web-based': 0,
-        'misc': 0
+        'misc': 0,
+        'goals': 0,
+        'work-experience': 0,
+        'education': 0
     }
+    aboutFlip = [
+        'goals',
+        'work-experience',
+        'education'
+    ]
+
     arrangeLogos();
-    $('.skills-flip-card').on('click', function() {
-        skillsCardFlip($(this));
+    $('.skills-flip-card, .about-flip-card').on('click', function() {
+        cardFlip($(this));
     });
 });
 
 
-function skillsCardFlip(category){
+function cardFlip(category){
+    let categories;
+    if (aboutFlip.includes(category.attr('id'))){
+        categories = aboutFlip;
+    } else {
+        categories = skillsCategories;
+        stopAnimation();
+    }
     let tempFront = isFront[category.attr('id')];
-    stopAnimation();
     // Make sure all cards are flipped to the front
-    for (let card of skillsCategories){
+    for (let card of categories){
         if (!isFront[card]){
-            skillsFlip[card] += 180;
+            flipDegrees[card] += 180;
             isFront[card] = true;
             $(`#${card}`).css({
                 'transition': 'transform 1s',
-                'transform': `rotateY(${skillsFlip[card]}deg)`
+                'transform': `rotateY(${flipDegrees[card]}deg)`
             });
         }
     }
     
     // If the card was already facing front
     if (tempFront){
-        skillsFlip[category.attr('id')] += 180;
-        resetLogos(`${category.attr('id')}-back`);
-        animateLogos(`${category.attr('id')}-back`);
+        flipDegrees[category.attr('id')] += 180;
+        if (skillsCategories.includes(category.attr('id'))){
+            resetLogos(`${category.attr('id')}-back`);
+            animateLogos(`${category.attr('id')}-back`);
+        }
         isFront[category.attr('id')] = false;
         category.css({
             'transition': 'transform 1s',
-            'transform': `rotateY(${skillsFlip[category.attr('id')]}deg)`
+            'transform': `rotateY(${flipDegrees[category.attr('id')]}deg)`
         });
     }
 }

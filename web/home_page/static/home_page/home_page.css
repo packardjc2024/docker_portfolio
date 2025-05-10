@@ -34,16 +34,13 @@
 }
 
 .section {
-    width: 85%;
+    width: 65%;
     display: flex;
     flex-direction: column;
-    padding-top: 100px;
-    padding-bottom: 100px;
-    padding-right: 50px;
-    padding-left: 50px;
+    padding: 50px;
     border-radius: 20px;
-    margin-top: 70px;
-    margin-bottom: 70px;
+    margin-top: 100px;
+    margin-bottom: 100px;
 }
 
 .section-container {
@@ -133,15 +130,13 @@
     width: 100%;
   }
 
-  .about-flip-card:hover {
+  /* .about-flip-card:hover {
     cursor: pointer;
     transition: transform 1s;
     transform: rotateY(180deg);
-  }
-
+  } */
 /***************** End flip card **********************/
 /****** End of page wide classes *************/
-
 
 /********** Start of Welcome container and typewriter **********/
 #welcome-section {
@@ -218,61 +213,6 @@
     flex-direction: column;
 }
 
-@media(min-width: 1401px){
-    .about-flip-card, .skills-flip-card{
-        width:500px;
-        min-height: 500px;
-    }
-    .about-card-parent, .skills-card-parent{
-        min-height: 500px;
-    }
-    .head-shot-img{
-        height: 500px;
-    }
-}
-
-@media(max-width: 1400px){
-    .about-flip-card, .skills-flip-card{
-        width:400px;
-        min-height: 400px;
-    }
-    .about-card-parent, .skills-card-parent{
-        min-height: 400px;
-    }
-    .head-shot-img{
-        height: 400px;
-    }
-}
-
-@media(max-width: 1100px){
-    .about-flip-card, .skills-flip-card{
-        width:400px;
-        min-height: 400px;
-    }
-    .about-card-parent, .skills-card-parent{
-        width: 100%;
-        min-height: 400px;
-    }
-    .head-shot-img{
-        height: 400px;
-    }
-}
-
-@media(max-width: 762px){
-    .about-flip-card, .skills-flip-card{
-        width:300px;
-        min-height: 300px;
-    }
-    .about-card-parent, .skills-card-parent{
-        width: 100%;
-        min-height: 300px;
-    }
-    .head-shot-img{
-        height: 300px;
-    }
-}
-
-
 .card-background {
     border-radius: 10px;
     border: solid rgb(255, 255, 255, 0.5) 1px;
@@ -344,18 +284,6 @@
 
 
 /******** Projects Container ********/
-/* #projects-section {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    padding-top: 100px;
-    padding-bottom: 100px;
-    padding-right: 50px;
-    padding-left: 50px;
-    justify-content: center;
-    align-items: center;
-} */
-
 .project-col {
     min-height: 400px;
     width: 400px;
@@ -431,4 +359,76 @@
 
 h1, h2, h3, h6 p {
     color: rgb(206, 206, 205) !important;
+}
+
+/* Media Queries */
+@media(min-width: 1435px){
+    .about-flip-card, .skills-flip-card{
+        width:400px;
+        min-height: 400px;
+    }
+    .about-card-parent, .skills-card-parent{
+        min-height: 400px;
+    }
+    .head-shot-img{
+        height: 400px;
+    }
+}
+
+/* Drop single column restraint but decrease size */
+@media(max-width: 1434px){
+    .about-flip-card, .skills-flip-card{
+        width:300px;
+        min-height: 300px;
+    }
+    .about-card-parent, .skills-card-parent{
+        min-height: 300px;
+    }
+    .head-shot-img{
+        height: 300px;
+    }
+}
+
+@media(max-width: 1100px){
+    .about-flip-card, .skills-flip-card{
+        width:400px;
+        min-height: 400px;
+    }
+    .about-card-parent, .skills-card-parent{
+        width: 100%;
+        min-height: 400px;
+    }
+    .head-shot-img{
+        height: 400px;
+    }
+}
+
+/* optimize for phones */
+@media(max-width: 762px){
+    .section {
+        width: 100%;
+        margin-right: 5px;
+        margin-left: 5px;
+    }
+    .about-flip-card, .skills-flip-card{
+        width:300px;
+        min-height: 300px;
+    }
+    .about-card-parent, .skills-card-parent{
+        width: 100%;
+        min-height: 300px;
+        margin-top: 10px;
+        padding: 0;
+    }
+    .head-shot-img{
+        height: 300px;
+    }
+    .project-cards-container {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        overflow-x: hidden;
+        align-items: center;
+        justify-content: center;
+    }
 }
