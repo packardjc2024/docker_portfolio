@@ -57,10 +57,13 @@ html {
     flex-wrap: nowrap;
 }
 
-.top-navbar-right-side {
+.top-navbar-right-side-large {
     margin-right: 10px;
 }
 
+.top-navbar-right-side-small{
+    display: none;
+}
 #pod-img {
     margin: 0;
     padding: 0;
