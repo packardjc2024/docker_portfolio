@@ -432,9 +432,10 @@ h1, h2, h3, h6 p {
         justify-content: center;
     }
     .project-col{
-
+        min-height: 300px;
+        min-width: 300px;
     }
     body {
-        background-size: cover;
+        background-size: auto 100vh;
     }
 }
