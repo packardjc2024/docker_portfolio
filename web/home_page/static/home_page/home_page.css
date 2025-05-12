@@ -414,14 +414,12 @@
         width: 96%;
         height: auto;
     }
-    /* body {
+    body {
         background-image: url('/static/site_pictures/background.png');
-        background-repeat: no-repeat;
         background-attachment: fixed;
-        background-size: cover;
         background-position: center;
         background-repeat: repeat;
-    } */
+    }
     .form-container{
         width: 100%;
     }
