@@ -414,12 +414,12 @@
         width: 96%;
         height: auto;
     }
-    body {
-        /* background-repeat: repeat; */
+    /* body {
+        background-repeat: repeat;
         background-attachment: fixed;
         background-size: contain;
         background-position: center;
-    }
+    } */
     .form-container{
         width: 100%;
     }
