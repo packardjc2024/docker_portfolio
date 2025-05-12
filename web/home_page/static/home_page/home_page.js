@@ -1,3 +1,4 @@
+// Start welcome section at full screen for 5 seconds
 $(document).ready(() => {
     $('#welcome-section').css('height', '100vh');
     setTimeout(() => {
@@ -6,6 +7,101 @@ $(document).ready(() => {
         }, 2000)
     }, 5000);
 })
+
+/******************************************************************************
+Flip card related functions
+*******************************************************************************/
+let skillsCategories;
+let skillsFront;
+let flipDegrees;
+let animationIds;
+let logoPositions;
+let logoId;
+let logoObjects;
+let currentAnimationCardId;
+let isFront;
+let aboutFlip;
+
+$(document).ready(() => {
+    animationIds = [];
+    logoPositions = [];
+    logoId = 1;
+    logoObjects = [];
+    skillsFront = true;
+    skillsFlip = 0;
+    skillsCategories = [
+        'front-end',
+        'back-end',
+        'web-based',
+        'misc'
+    ];
+    isFront = {
+        'front-end': true,
+        'back-end': true,
+        'web-based': true,
+        'misc': true,
+        'goals': true,
+        'work-experience': true,
+        'education': true,
+    }
+    flipDegrees = {
+        'front-end': 0,
+        'back-end': 0,
+        'web-based': 0,
+        'misc': 0,
+        'goals': 0,
+        'work-experience': 0,
+        'education': 0
+    }
+    aboutFlip = [
+        'goals',
+        'work-experience',
+        'education'
+    ]
+
+    arrangeLogos();
+    $('.skills-flip-card, .about-flip-card').on('click', function() {
+        cardFlip($(this));
+    });
+});
+
+
+function cardFlip(category){
+    let categories;
+    if (aboutFlip.includes(category.attr('id'))){
+        categories = aboutFlip;
+    } else {
+        categories = skillsCategories;
+        stopAnimation();
+    }
+    let tempFront = isFront[category.attr('id')];
+    // Make sure all cards are flipped to the front
+    for (let card of categories){
+        if (!isFront[card]){
+            flipDegrees[card] += 180;
+            isFront[card] = true;
+            $(`#${card}`).css({
+                'transition': 'transform 1s',
+                'transform': `rotateY(${flipDegrees[card]}deg)`
+            });
+        }
+    }
+    
+    // If the card was already facing front
+    if (tempFront){
+        flipDegrees[category.attr('id')] += 180;
+        if (skillsCategories.includes(category.attr('id'))){
+            resetLogos(`${category.attr('id')}-back`);
+            animateLogos(`${category.attr('id')}-back`);
+        }
+        isFront[category.attr('id')] = false;
+        category.css({
+            'transition': 'transform 1s',
+            'transform': `rotateY(${flipDegrees[category.attr('id')]}deg)`
+        });
+    }
+}
+
 
 /******************************************************************************
 Logo animation related functions
@@ -31,7 +127,6 @@ function animateLogos(containerId){
     }
 }
 
-
 function arrangeLogos(){
 // Arranges the logos' starting points based on the max size
 // Creates a list of container objects that include a list of logo objects
@@ -40,7 +135,6 @@ function arrangeLogos(){
         let logos = logoContainer.getElementsByClassName('moving-logo');
         let logoHeight = calculateLogoHeight(logos);
         let logoWidth = calculateLogoWidth(logos);
-        // let containerWidth = document.getElementById('skills-flip-back').offsetWidth;
         let containerWidth = logoContainer.offsetWidth;
         let initialTop;
         let initialLeft;
@@ -200,95 +294,4 @@ function erase(elementObject, elementString, speed){
             index--;
         }
     }, speed);
-}
-
-let skillsCategories;
-let skillsFront;
-let flipDegrees;
-let animationIds;
-let logoPositions;
-let logoId;
-let logoObjects;
-let currentAnimationCardId;
-let isFront;
-let aboutFlip;
-
-$(document).ready(() => {
-    animationIds = [];
-    logoPositions = [];
-    logoId = 1;
-    logoObjects = [];
-    skillsFront = true;
-    skillsFlip = 0;
-    skillsCategories = [
-        'front-end',
-        'back-end',
-        'web-based',
-        'misc'
-    ];
-    isFront = {
-        'front-end': true,
-        'back-end': true,
-        'web-based': true,
-        'misc': true,
-        'goals': true,
-        'work-experience': true,
-        'education': true,
-    }
-    flipDegrees = {
-        'front-end': 0,
-        'back-end': 0,
-        'web-based': 0,
-        'misc': 0,
-        'goals': 0,
-        'work-experience': 0,
-        'education': 0
-    }
-    aboutFlip = [
-        'goals',
-        'work-experience',
-        'education'
-    ]
-
-    arrangeLogos();
-    $('.skills-flip-card, .about-flip-card').on('click', function() {
-        cardFlip($(this));
-    });
-});
-
-
-function cardFlip(category){
-    let categories;
-    if (aboutFlip.includes(category.attr('id'))){
-        categories = aboutFlip;
-    } else {
-        categories = skillsCategories;
-        stopAnimation();
-    }
-    let tempFront = isFront[category.attr('id')];
-    // Make sure all cards are flipped to the front
-    for (let card of categories){
-        if (!isFront[card]){
-            flipDegrees[card] += 180;
-            isFront[card] = true;
-            $(`#${card}`).css({
-                'transition': 'transform 1s',
-                'transform': `rotateY(${flipDegrees[card]}deg)`
-            });
-        }
-    }
-    
-    // If the card was already facing front
-    if (tempFront){
-        flipDegrees[category.attr('id')] += 180;
-        if (skillsCategories.includes(category.attr('id'))){
-            resetLogos(`${category.attr('id')}-back`);
-            animateLogos(`${category.attr('id')}-back`);
-        }
-        isFront[category.attr('id')] = false;
-        category.css({
-            'transition': 'transform 1s',
-            'transform': `rotateY(${flipDegrees[category.attr('id')]}deg)`
-        });
-    }
 }
