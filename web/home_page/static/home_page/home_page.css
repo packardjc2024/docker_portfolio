@@ -369,6 +369,13 @@
     }
 }
 
+@media (min-width: 763px){
+    body{
+        background-size: cover;
+        background-position: center;
+    }
+}
+
 @media(max-width: 762px){
     /* optimize for phones */
     #welcome-section{
