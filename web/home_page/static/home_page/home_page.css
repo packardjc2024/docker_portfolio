@@ -415,7 +415,6 @@
         height: auto;
     }
     body {
-        background-image: url('/static/site_pictures/background.png');
         background-attachment: fixed;
         background-repeat: repeat;
     }
