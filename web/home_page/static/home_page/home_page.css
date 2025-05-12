@@ -315,6 +315,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 5px;
 }
 
 .form-container{
@@ -414,11 +415,8 @@
     body {
         background-repeat: repeat;
     }
-    .contact-container{
-        margin: 5px;
-    }
     .form-container{
-        width: 96%;
+        width: 100%;
     }
     .moving-logo{
         height: 50px;
