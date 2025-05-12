@@ -243,7 +243,7 @@
 }
 
 .moving-logo {
-    height: 75px;
+    height: 100px;
     position: absolute;
     background: transparent;
     margin: 0;
@@ -416,5 +416,8 @@
     }
     .contact-container{
         margin: 5px;
+    }
+    .moving-logo{
+        height: 50px;
     }
 }
