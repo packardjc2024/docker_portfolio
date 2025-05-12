@@ -309,19 +309,19 @@
 
 
 /***** Contact section classes *****/
-.form-container{
-    min-width: 300px;
-    min-height: 300px;
-    max-width: 600px;
-    padding: 10px;
-}
-
 .contact-container{
     width: 100%;
     height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.form-container{
+    min-width: 300px;
+    min-height: 300px;
+    max-width: 600px;
+    padding: 10px;
 }
 
 
@@ -416,6 +416,9 @@
     }
     .contact-container{
         margin: 5px;
+    }
+    .form-container{
+        width: 96%;
     }
     .moving-logo{
         height: 50px;
