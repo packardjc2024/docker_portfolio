@@ -108,7 +108,7 @@ def index(request):
         },
         {
         'name': "CSVQL",
-        'img_url': '',
+        'img_url': '/site_pictures/csvql.png',
         'text': (
             "Coming Soon..."
         ),
