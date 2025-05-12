@@ -1,40 +1,33 @@
-/******* Start of page wide classes *******/
+/***** Variable Definitions *****/
+:root{
+    --text-color: rgb(206, 206, 205);
+    --section-background: rgb(76, 145, 208, 0.4);
+    --section-border: solid rgb(255, 255, 255, 0.5) 1px;
+    --glass-border-color: rgb(255, 255, 255, 0.5);
+    --glass-background-color: rgb(255, 255, 255, 0.3);
+    --button-color: #0088cc;
+}
+
+
+/***** Page wide classes *****/
 *{
     box-sizing: border-box;
 }
 
 .glass-container {
     border-radius: 10px;
-    border: solid rgb(255, 255, 255, 0.5) 1px;
+    border: solid var(--glass-border-color) 1px;
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    background: rgb(255, 255, 255, 0.3);
-    color: white;
-}
-
-.dark-glass {
-    border-radius: 10px;
-    border: solid rgb(0, 0, 0, 0.5) 1px;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    background: rgb(0, 0, 0, 0.5);
-    color: white;
-}
-
-.centered-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-    padding: 5px;
+    background: var(--glass-background-color);
+    color: var(--text-color);
 }
 
 .section-header {
     width: 100%;
-    color: white;
-    margin-bottom: 30px;
+    color: var(--text-color);
     text-align: center;
+    margin: 10px;
 }
 
 .section {
@@ -45,32 +38,15 @@
     border-radius: 20px;
     margin-top: 100px;
     margin-bottom: 100px;
-}
-
-.section-container {
-    min-width: 50%;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    padding: 50px;
-}
-
-.section-background {
-    /* background: #6a9c89; */
-    background: rgb(76, 145, 208, 0.4);
+    background: var(--section-background);
     border-radius: 10px;
-    border: solid rgb(255, 255, 255, 0.5) 1px;
+    border: var(--section-border);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
 }
 
-.section-border {
-    width: 66vh;
-    height: 3px;
-    background: #536493;
-}
 
-/******* Start Flip container ******************/
+/***** Flip card classes *****/
 .flip-parent {
     min-width: 300px;
     min-height: 300px;
@@ -97,7 +73,6 @@
     margin: 0;
   }
   
-  /* what the actually flips are performed on */
   .flip-card {
     position: absolute;
     width: 100%;
@@ -120,7 +95,7 @@
     align-items: center;
     padding: 0;
     margin: 0;
-    color: white;
+    color: var(--text-color);
     border-radius: 10px;
   }
 
@@ -134,15 +109,8 @@
     width: 100%;
   }
 
-  /* .about-flip-card:hover {
-    cursor: pointer;
-    transition: transform 1s;
-    transform: rotateY(180deg);
-  } */
-/***************** End flip card **********************/
-/****** End of page wide classes *************/
 
-/********** Start of Welcome container and typewriter **********/
+/***** Welcome container *****/
 #welcome-section {
     padding-top: 100px;
     padding-bottom:100px;
@@ -163,17 +131,31 @@
     padding: 0;
     width: 100%;
     height: 100%;
-    /* transition: height 1s ease; */
 }
 
 #hello-container, #name-container {
-    color: white;
+    color: var(--text-color);
     font-size: 60px;
     background: transparent;
+    text-shadow: 0px 2px black;
 }
 
+.welcome-background {
+    background:
+        radial-gradient(circle at 20% 30%, rgb(76, 145, 208), transparent 40%), 
+        radial-gradient(circle at 80% 70%, rgb(145, 215, 254), transparent 40%), 
+        radial-gradient(circle at 50% 50%, rgb(191, 129, 105), transparent 40%), 
+        radial-gradient(circle at 30% 80%, rgb(206, 206, 206), transparent 40%), 
+        radial-gradient(circle at 70% 20%, rgb(95, 141, 75), transparent 40%);
+    background-color: rgb(28, 28, 28);
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+}
+
+
+/***** Typewriter effect *****/
 .caret-container{
-    border-right: 2px solid white;
+    border-right: 2px solid var(--text-color);
     padding: 5px;
     min-height: 70px;
     animation: blink-caret 0.75s step-end infinite;
@@ -181,9 +163,11 @@
 
 @keyframes blink-caret{
     from, to {border-color: transparent;}
-    50% {border-color: white;}
+    50% {border-color: var(--text-color);}
 }
-/*********** End of Welcome container and typwriter **************/
+
+
+/***** About section classes *****/
 .about-container {
     width: 100%;
     display: flex;
@@ -208,6 +192,12 @@
     margin: 10px;
 }
 
+.about-flip-back{
+    text-wrap: pretty;
+    flex-direction: column;
+    padding: 10px;
+}
+
 .about-flip-front {
     height: 100%;
     width: 100%;
@@ -217,27 +207,17 @@
     flex-direction: column;
 }
 
-.card-background {
-    border-radius: 10px;
-    border: solid rgb(255, 255, 255, 0.5) 1px;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    background: rgb(255, 255, 255, 0.3);
-    color: rgb(206, 206, 206);
-}
-
 .head-shot-img {
     height: 300px;
     border-radius: 50%;
-    border: solid rgb(255, 255, 255, 0.5) 1px;
+    border: solid var(--glass-border-color) 1px;
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    background: rgb(255, 255, 255, 0.3);
+    background: var(--glass-background-color);
 }
-/********** End of About Me Container ***************/
 
 
-/********** Start of Skills Container ***************/
+/***** Skills section classes *****/
 .skills-container {
     width: 100%;
     display: flex;
@@ -245,7 +225,6 @@
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    /* gap: 50px; */
 }
 
 .skills-flip-front {
@@ -253,17 +232,7 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    color: white;
-}
-
-
-.skills_header {
-    border-bottom: solid rgb(255, 255, 255, 0.5) 1px;
-    width: 100%;
-    margin: 0px;
-    padding: 0px;
-    text-align: center;
-    box-sizing: border-box;
+    color: var(--text-color);
 }
 
 .logos-container {
@@ -280,20 +249,15 @@
     margin: 0;
     padding: 0;
 }
-/********** End of skills container ***************/
 
 
-/*************** dynamic sizing of skills containers ********************/
-
-
-
-/******** Projects Container ********/
+/***** Projects section classes *****/
 .project-col {
     min-height: 400px;
     width: 400px;
     border-radius: 10px;
     margin: 10px;
-    color: white;
+    color: var(--text-color);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -325,26 +289,26 @@
 }
 
 .button {
-    background: #0088cc;
+    background: var(--button-color);
     height: 30px;
     width: 70px;
     padding: 2px;
-    color: white;
+    color: var(--text-color);
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 6px;
-    border: solid 1px #0088cc;
+    border: var(--button-color);
     margin: 5px;
 }
 
 .button:hover {
     background: transparent;
-    color: #0088cc;
+    color: var(--button-color);
 }
-/******** End projects contatiner ********/
 
-/********* Contact section *************/
+
+/***** Contact section classes *****/
 .form-container{
     min-width: 300px;
     min-height: 300px;
@@ -360,13 +324,8 @@
     align-items: center;
 }
 
-/********** End of contact section ******/
 
-h1, h2, h3, h6 p {
-    color: rgb(206, 206, 205) !important;
-}
-
-/* Media Queries */
+/***** Media Queries for dynamic sizing *****/
 @media(min-width: 1435px){
     .about-flip-card, .skills-flip-card{
         width:400px;
@@ -380,8 +339,8 @@ h1, h2, h3, h6 p {
     }
 }
 
-/* Drop single column restraint but decrease size */
 @media(max-width: 1434px){
+    /* Drop single column restraint but decrease size */
     .about-flip-card, .skills-flip-card{
         width:300px;
         min-height: 300px;
@@ -408,8 +367,8 @@ h1, h2, h3, h6 p {
     }
 }
 
-/* optimize for phones */
 @media(max-width: 762px){
+    /* optimize for phones */
     #welcome-section{
         margin-bottom: 40px;
     }

@@ -11,6 +11,74 @@ import os
 def index(request):
     context = {}
     context['form_submitted'] = False
+
+    # About Section cards
+    context['about_cards'] = []
+    about_cards = [
+        {
+        'header': 'Goals',
+        'text': (
+            "<p>I am seeking a career as a full-stack software engineer; "
+            "however, I am also open to a career focused on the back-end. "
+            "The focus of my studies has been a Python-based stack; however, "
+            "I am open to and enjoy learning new languages. I am especially "
+            "interested in learning more C/C++.</p>"
+        )
+        },
+        {
+            'header': 'Work Experience',
+            'text': (
+                "<ul><li>7 years - Overseas both working for a non-profit"
+                "and running a business</li>"
+                "<li>5 years - Firefighter/EMT</li>"
+                "<li>4 months - Technical Services Analyst (SQL)</li></ul>"
+            )
+        },
+        {
+            'header': 'Education',
+            'text': (
+                "<ul><li>B.A> Internation Studies</li>"
+                "<li>Software Developer Using Python - Community College "
+                "non-degree career course</li>"
+                "<li>Certiport IT Specialist in Python</li>"
+                "<li>Certifport IT specialist in Databases</li>"
+                "<li>1 1/2 years programming full-time self-study</li>"
+            )
+        }
+    ]
+    for about in about_cards:
+        name = about['header'].lower().replace(' ', '-')
+        context['about_cards'].append({
+            'header': about['header'],
+            'text': about['text'],
+            'card_id': name,
+            'parent_id': f'{name}-card',
+            'front_id': f'{name}-front',
+            'back_id': f'{name}-back',
+        })
+
+    # Skills section cards
+    context['skills'] = []
+    skills = [
+        'Front End',
+        'Back End',
+        'Web Based',
+        'Misc',
+    ]
+    for skill in skills:
+        name = skill.lower().replace(' ', '-')
+        temp_dict = {
+            'header': skill,
+            'card_id': name,
+            'front_id': f'{name}-front',
+            'back_id': f'{name}-back',
+        }
+        logos_path = Path.joinpath(Path(settings.BASE_DIR, 'static', 'logos', f'{skill.lower().replace(' ', '_')}'))
+        logos = [name for name in os.listdir(logos_path) if name.endswith('.png')]
+        temp_dict['logos'] = [f"static/logos/{skill.lower().replace(' ', '_')}/{logo}" for logo in logos]
+        context['skills'].append(temp_dict)
+    
+    # Project section cards
     context['projects'] = [
         {
         'name': 'Portfolio',
@@ -49,6 +117,8 @@ def index(request):
         'alt': 'CSVQL Screenshot',
         },
     ]
+
+    # Handle requestes and serve html files
     if request.method == 'GET':
         context['contact_form'] = ContactForm()
     elif request.method == 'POST':

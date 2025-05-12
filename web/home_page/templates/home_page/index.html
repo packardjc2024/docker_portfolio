@@ -11,6 +11,7 @@
 
 <!-- Add the index's content to the main header block -->
 {% block body_extension %}
+
 <!-- Welcome Section -->
 <div class="welcome-background" id="welcome-section"> 
 
@@ -23,147 +24,67 @@
 </div>
 
 <!-- About Section -->
-<div class="section section-background" id="about-section">
+<div class="section" id="about-section">
 
-    <h1 class="w-100 text-center mb-5">About Jeremy</h1>
+    <h1 class="section-header">About Jeremy</h1>
     <div class="about-container">
         <!-- Head shot Card -->
         <div class="about-card-parent" id="about-head-shot-card">
             <img alt="Head Shot" class="head-shot-img" src="{% static 'site_pictures/head_shot.png' %}">
         </div>
-        <!-- Goals Card -->
-        <div class="about-card-parent" id="goals-card">
+        <!-- About Card Template -->
+         {% for about in about_cards %}
+        <div class="about-card-parent" id="{{ about.parent_id }}">
             <div class="flip-parent">
                 <div class="flip-container">
-                    <div class="flip-card about-flip-card" id="goals">
-                        <div class="flip-front about-flip-front card-background" id="goals-front">
-                            <h2>Goals</h2>
+                    <div class="flip-card about-flip-card" id="{{ about.card_id }}">
+                        <div class="flip-front about-flip-front glass-container" id="{{ about.front_id }}">
+                            <h2>{{ about.header }}</h2>
                         </div>
-                        <div class="flip-back about-flip-back card-background" id="goals-back">
-                            <h2>back</h2>
+                        <div class="flip-back about-flip-back glass-container" id="{{ about.back_id }}">
+                            {{ about.text|safe }}
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- Work Experience Card-->
-        <div class="about-card-parent" id="work-experience-card">
-            <div class="flip-parent">
-                <div class="flip-container">
-                    <div class="flip-card about-flip-card" id="work-experience">
-                        <div class="flip-front about-flip-front card-background" id="work-experience-front">
-                            <h2>Work Experience</h2>
-                        </div>
-                        <div class="flip-back about-flip-back card-background" id="work-experience-back">
-                            <h2>back</h2>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Education Card -->
-        <div class="about-card-parent" id="education-card">
-            <div class="flip-parent">
-                <div class="flip-container">
-                    <div class="flip-card about-flip-card" id="education">
-                        <div class="flip-front about-flip-front card-background" id="education-front">
-                            <h2>Education</h2>
-                        </div>
-                        <div class="flip-back about-flip-back card-background" id="education-back">
-                            <h2>back</h2>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        {% endfor %}
     </div>
+
 </div>
 
 <!-- Skills Section -->
-<div class="section section-background" id="skills-section">
+<div class="section" id="skills-section">
 
-    <h1 class="w-100 text-center mb-5">Python Full-Stack Developer Skills</h1>
+    <h1 class="section-header">Python Full-Stack Developer Skills</h1>
     <div class="skills-container">
-        
-        <!-- Front End Section -->
+        <!-- Skills card template -->
+         {% for skill in skills %}
         <div class="skills-card-parent">
             <div class="flip-parent">
                 <div class="flip-container">
-                    <div class="flip-card skills-flip-card" id="front-end">
-                        <div class="flip-front skills-flip-front card-background" id="front-end-front">
-                            <h2>Front End</h2>
+                    <div class="flip-card skills-flip-card" id="{{ skill.card_id }}">
+                        <div class="flip-front skills-flip-front glass-container" id="{{ skill.front_id }}">
+                            <h2>{{ skill.header }}</h2>
                         </div>
-                        <div class="flip-back skills-flip-back logos-container card-background" id="front-end-back">
-                            <img src="{% static 'logos/front_end/css_logo.png' %}" class="moving-logo">
-                            <img src="{% static 'logos/front_end/javascript_logo.png' %}" class="moving-logo">
-                            <img src="{% static 'logos/front_end/bootstrap_logo.png' %}" class="moving-logo">
-                            <img src="{% static 'logos/front_end/jquery_logo.png' %}" class="moving-logo">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Back End Section -->
-        <div class="skills-card-parent">
-            <div class="flip-parent skills-flip-parent">
-                <div class="flip-container">
-                    <div class="flip-card skills-flip-card" id="back-end">
-                        <div class="flip-front skills-flip-front card-background" id="back-end-front">
-                            <h2>Back End</h2>
-                        </div>
-                        <div class="flip-back skills-flip-back logos-container card-background" id="back-end-back">
-                            <img src="{% static 'logos/back_end/python_logo.png' %}" class="moving-logo">
-                            <img src="{% static 'logos/back_end/postgres_logo.png' %}" class="moving-logo">
-                            <img src="{% static 'logos/back_end/sqlserver_logo.png' %}" class="moving-logo">
-                            <img src="{% static 'logos/back_end/mysql_logo.png' %}" class="moving-logo">
+                        <div class="flip-back skills-flip-back logos-container glass-container" id="{{ skill.back_id }}">
+                            {% for logo in skill.logos %}
+                            <img src="{{ logo }}" class="moving-logo">
+                            {% endfor %}
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- Web-based Section -->
-        <div class="skills-card-parent">
-            <div class="flip-parent skills-flip-parent">
-                <div class="flip-container">
-                    <div class="flip-card skills-flip-card" id="web-based">
-                        <div class="flip-front skills-flip-front card-background" id="web-based-front">
-                            <h2>Web-Based</h2>
-                        </div>
-                        <div class="flip-back skills-flip-back logos-container card-background" id="web-based-back">
-                            <img src="{% static 'logos/web_based/aws_logo.png' %}" class="moving-logo">
-                            <img src="{% static 'logos/web_based/nginx_logo.png' %}" class="moving-logo">
-                            <img src="{% static 'logos/web_based/django_logo.png' %}" class="moving-logo">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Misc Section -->
-        <div class="skills-card-parent">
-            <div class="flip-parent skills-flip-parent">
-                <div class="flip-container">
-                    <div class="flip-card skills-flip-card" id="misc">
-                        <div class="flip-front skills-flip-front card-background" id="misc-front">
-                            <h2>Misc.</h2>
-                        </div>
-                        <div class="flip-back skills-flip-back logos-container card-background" id="misc-back">
-                            <img src="{% static 'logos/misc/docker_logo.png' %}" class="moving-logo">
-                            <img src="{% static 'logos/misc/git_logo.png' %}" class="moving-logo">
-                            <img src="{% static 'logos/misc/github_logo.png' %}" class="moving-logo">
-                            <img src="{% static 'logos/misc/linux_logo.png' %}" class="moving-logo">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
+        {% endfor %}
     </div>
+
 </div>
 
 <!-- Projects Section -->
-<div class="section section-background" id="projects-section">
+<div class="section" id="projects-section">
 
-    <h1 class="w-100 mb-5 text-center">Projects</h1>
+    <h1 class="section-header">Projects</h1>
     <div class="project-cards-container">
         {% for project in projects %}
         <div class="glass-container project-col">
@@ -193,11 +114,11 @@
 </div>
 
 <!-- Contact Section -->
-<div class="section-background section" id="contact-section">
+<div class="section" id="contact-section">
 
-    <h1 class="w-100 mb-5 text-center">Let's Talk</h1>
+    <h1 class="section-header">Let's Talk</h1>
     <div class="contact-container">
-        <div class="form-container card-background">
+        <div class="form-container glass-container">
             {% if not form_submitted %}
             <form method="POST" action="{% url 'home_page:index' %}" id="contact-form">
                 {% csrf_token %}
@@ -213,7 +134,5 @@
     </div>
 
 </div> 
+
 {% endblock %}
-
-
-<!-- automate projects section and about section using constants.py file -->
