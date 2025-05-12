@@ -93,12 +93,17 @@ function resetLogos(containerId){
     }
 }
 
-
 function moveLogo(logoObject, containerElement){
     // Animation function that makes the logos move
     let animationId;
     let x = logoObject['element'].offsetLeft;
     let y = logoObject['element'].offsetTop;
+
+    // Slow down animation on smaller screens
+    if (window.innerWidth < 763){
+        logoObject['distanceX'] = (logoObject['distanceX'] > 0) ? 1 : -1;
+        logoObject['distanceY'] = (logoObject['distanceY'] > 0) ? 1 : -1;
+    }
 
     x += logoObject['distanceX'];
     y += logoObject['distanceY'];
