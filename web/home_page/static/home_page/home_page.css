@@ -112,10 +112,10 @@
 
 /***** Welcome container *****/
 #welcome-section {
-    padding-top: 100px;
-    padding-bottom:100px;
+    /* padding-top: 100px;
+    padding-bottom:100px; */
     width: 100%;
-    min-height: 400px;
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -379,11 +379,11 @@
 @media(max-width: 762px){
     /* optimize for phones */
     #welcome-section{
-        margin-bottom: 40px;
+        margin-bottom: 100px !important;
     }
     .section {
         width: 100%;
-        margin: 0 0 40px 0 !important;
+        margin: 0 0 100px 0 !important;
         padding: 0 !important;
     }
     .about-flip-card, .skills-flip-card{

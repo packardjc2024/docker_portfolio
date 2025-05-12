@@ -1,9 +1,8 @@
 // Start welcome section at full screen for 5 seconds
 $(document).ready(() => {
-    $('#welcome-section').css('height', '100vh');
     setTimeout(() => {
         $('#welcome-section').animate({
-            height: '400px'
+            height: '500px',
         }, 2000)
     }, 5000);
 })
