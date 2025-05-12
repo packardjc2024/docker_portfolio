@@ -24,7 +24,6 @@ body {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background: transparent;
     background-image: url('/static/site_pictures/background.png');
     background-repeat: no-repeat;
     background-attachment: fixed;
