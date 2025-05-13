@@ -41,7 +41,7 @@ def index(request):
         {
             'header': 'Education',
             'text': (
-                "<ul><li>B.A> Internation Studies</li>"
+                "<ul><li>B.A Internation Studies</li>"
                 "<li>Software Developer Using Python - Community College "
                 "non-degree career course</li>"
                 "<li>Certiport IT Specialist in Python</li>"
@@ -136,7 +136,7 @@ def index(request):
             sender = settings.EMAIL_HOST_USER
             recipient = settings.EMAIL_HOST_USER
             host = settings.EMAIL_HOST
-            port = int(settings.EMAIL_PORT)
+            port = settings.EMAIL_PORT
             password = settings.EMAIL_HOST_PASSWORD
             server = smtplib.SMTP(host, port)
             server.starttls()

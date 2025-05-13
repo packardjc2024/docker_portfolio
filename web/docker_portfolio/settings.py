@@ -236,7 +236,7 @@ else:
     }
 
 
-EMAIL_PORT = decrypt_string(os.getenv('EMAIL_PORT'), DECRYPTION_KEY)
+EMAIL_PORT = int(decrypt_string(os.getenv('EMAIL_PORT'), DECRYPTION_KEY))
 EMAIL_HOST = decrypt_string(os.getenv('EMAIL_HOST'), DECRYPTION_KEY)
 EMAIL_HOST_USER = decrypt_string(os.getenv('EMAIL_HOST_USER'), DECRYPTION_KEY)
 EMAIL_HOST_PASSWORD = decrypt_string(os.getenv('EMAIL_HOST_PASSWORD'), DECRYPTION_KEY)
