@@ -129,14 +129,15 @@ def index(request):
         load_dotenv()
         contact_form = ContactForm(request.POST)
         if contact_form.is_valid():
+            # Process the form
             data = contact_form.cleaned_data
             contact_form.save()
             # Send an email
-            sender = os.getenv('EMAIL_HOST_USER')
-            recipient = os.getenv('EMAIL_HOST_USER')
-            host = os.getenv('EMAIL_HOST')
-            port = int(os.getenv('EMAIL_PORT'))
-            password = os.getenv('EMAIL_HOST_PASSWORD')
+            sender = settings.EMAIL_HOST_USER
+            recipient = settings.EMAIL_HOST_USER
+            host = settings.EMAIL_HOST
+            port = int(settings.EMAIL_PORT)
+            password = settings.EMAIL_HOST_PASSWORD
             server = smtplib.SMTP(host, port)
             server.starttls()
             server.login(sender, password)

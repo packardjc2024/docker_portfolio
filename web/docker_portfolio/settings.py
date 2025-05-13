@@ -48,7 +48,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = decrypt_string(encrypted_string=os.getenv('DJANGO_SECRET'), password=DECRYPTION_KEY)
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 USE_SRI = True
 SRI_ENABLED = True
@@ -234,3 +234,9 @@ else:
             },
         }
     }
+
+
+EMAIL_PORT = decrypt_string(os.getenv('EMAIL_PORT'), DECRYPTION_KEY)
+EMAIL_HOST = decrypt_string(os.getenv('EMAIL_HOST'), DECRYPTION_KEY)
+EMAIL_HOST_USER = decrypt_string(os.getenv('EMAIL_HOST_USER'), DECRYPTION_KEY)
+EMAIL_HOST_PASSWORD = decrypt_string(os.getenv('EMAIL_HOST_PASSWORD'), DECRYPTION_KEY)

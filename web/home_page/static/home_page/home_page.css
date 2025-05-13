@@ -1,6 +1,6 @@
 /***** Variable Definitions *****/
 :root{
-    --text-color: rgb(206, 206, 205);
+    --text-color: white;
     --section-background: rgb(76, 145, 208, 0.4);
     --section-border: solid rgb(255, 255, 255, 0.5) 1px;
     --glass-border-color: rgb(255, 255, 255, 0.5);
@@ -324,6 +324,11 @@
     min-height: 300px;
     max-width: 600px;
     padding: 10px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
 }
 
 
