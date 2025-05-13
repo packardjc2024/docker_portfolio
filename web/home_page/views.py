@@ -6,6 +6,10 @@ from .models import *
 from pathlib import Path
 from django.conf import settings
 import os
+import smtplib
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
+from dotenv import load_dotenv
 
 # Create your views here.
 def index(request):
@@ -122,9 +126,33 @@ def index(request):
     if request.method == 'GET':
         context['contact_form'] = ContactForm()
     elif request.method == 'POST':
+        load_dotenv()
         contact_form = ContactForm(request.POST)
         if contact_form.is_valid():
+            data = contact_form.cleaned_data
             contact_form.save()
+            # Send an email
+            sender = os.getenv('EMAIL_HOST_USER')
+            recipient = os.getenv('EMAIL_HOST_USER')
+            host = os.getenv('EMAIL_HOST')
+            port = int(os.getenv('EMAIL_PORT'))
+            password = os.getenv('EMAIL_HOST_PASSWORD')
+            server = smtplib.SMTP(host, port)
+            server.starttls()
+            server.login(sender, password)
+            message = MIMEMultipart()
+            message['From'] = sender
+            message['To'] = recipient
+            message['Subject'] = 'Contact Form Submitted'
+            body = (
+                f'From: {data['first_name']} {data['last_name']}\n'
+                f'Email: {data['email']}\n'
+                f'Phone Number: {data['phone_number']}\n\n'
+                f'Comments: {data['comments']}'
+            )
+            message.attach(MIMEText(body, 'plain'))
+            server.sendmail(sender, recipient, message.as_string())
+            server.quit()
             context['form_submitted'] = True
         else:
             context['context_form'] = contact_form

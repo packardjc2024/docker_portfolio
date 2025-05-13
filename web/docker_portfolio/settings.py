@@ -16,6 +16,8 @@ import subprocess
 from dotenv import load_dotenv
 load_dotenv()
 
+
+
 ###############################################################################
 # Decrypt necessary values
 ###############################################################################
@@ -46,7 +48,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = decrypt_string(encrypted_string=os.getenv('DJANGO_SECRET'), password=DECRYPTION_KEY)
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 USE_SRI = True
 SRI_ENABLED = True
@@ -232,13 +234,3 @@ else:
             },
         }
     }
-
-# # Email
-# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-# EMAIL_USE_TLS = True
-# EMAIL_USE_SSL = False
-
-# EMAIL_HOST = decrypt_string(os.getenv('EMAIL_SERVER'), DECRYPTION_KEY)
-# EMAIL_PORT = decrypt_string(os.getenv('EMAIL_PORT'), DECRYPTION_KEY)
-# EMAIL_HOST_USER = decrypt_string(os.getenv('EMAIL_USER'), DECRYPTION_KEY)
-# EMAIL_HOST_PASSWORD = decrypt_string(os.getenv('EMAIL_PASSWORD'), DECRYPTION_KEY)
