@@ -52,4 +52,8 @@ for volume_directory in ${VOLUME_DIRECTORIES[@]}; do
     sudo chmod -R g+xwr $volume_directory
 done
 
+# Rebuild the containers
+docker compose down
+docker compose up --build -d
+
 exit
