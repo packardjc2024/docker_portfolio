@@ -17,7 +17,7 @@ services:
     build: ./web
     restart: always
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:${CONTAINER_PORT}/health/"]
+      test: ["CMD", "curl", "-f", "http://localhost:8003/health/"]
       interval: 30s
       timeout: 5s
       retries: 3
