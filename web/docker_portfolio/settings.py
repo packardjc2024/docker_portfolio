@@ -72,6 +72,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'sri',
     'home_page',
+    'system_check',
 ]
 
 MIDDLEWARE = [
