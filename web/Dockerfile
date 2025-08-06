@@ -5,7 +5,7 @@ FROM python:3.13-slim
 WORKDIR /app
 
 # Update packages
-RUN apt-get update && apt-get install -y postgresql-client sudo passwd nano
+RUN apt-get update && apt-get install -y postgresql-client sudo passwd nano curl
 
 # Upgrade Pip
 RUN pip3 install --upgrade pip
