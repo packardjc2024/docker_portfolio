@@ -37,5 +37,8 @@ RUN chown -R www-data:www-data /app
 RUN chmod -R 777 /app
 USER www-data
 
+# Run the entrypoint bash file
+ENTRYPOINT ["/entry.sh"]
+
 # Start the application using Gunicorn
 CMD ["gunicorn", "--bind", "0.0.0.0:8003", "docker_portfolio.wsgi:application"]
