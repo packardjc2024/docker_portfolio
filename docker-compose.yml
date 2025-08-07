@@ -28,18 +28,12 @@ services:
       - db
     volumes:
       - ./web:/app
-      - static_volume:/app/staticfiles
-      - media_volume:/app/media
-      - logs_volume:/app/logs
+      - /srv/docker/docker_portfolio/staticfiles:/app/staticfiles
+      - /srv/docker/docker_portfolio/media:/app/media
+      - /srv/docker/docker_portfolio/logs:/app/logs
     networks:
       docker_portfolio_network:
         ipv4_address: 172.35.0.3
-
-volumes:
-  postgres_data:
-  static_volume:
-  media_volume:
-  logs_volume:
 
 networks:
   docker_portfolio_network:
