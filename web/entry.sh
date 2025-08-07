@@ -16,8 +16,6 @@ for dir in "${VOLUMES[@]}"; do
 done
 
 touch /app/logs/django_logs.txt
-chgrp staticgroup /app/logs/django_logs.txt
-chmod g+rw /app/logs/django_logs.txt
 
 # Collect static files
 python3 manage.py collectstatic --noinput

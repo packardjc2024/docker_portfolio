@@ -4,7 +4,7 @@
 source .env
 
 # Move into the project's root directory
-cd ~/${PROJECT_NAME}
+cd /home/developer/${PROJECT_NAME}
 
 # Decrypte GitHub Token
 SECOND_KEY=$(echo $SECOND_KEY | openssl enc -aes-256-cbc -d -base64 -pbkdf2 -pass pass:${FIRST_KEY} -A)
@@ -36,9 +36,9 @@ PATH_DIRECTORIES=(
     '/srv/docker' 
 )
 VOLUME_DIRECTORIES=(
-    "/srv/docker/${PROJECT_NAME}_static_volume" 
-    "/srv/docker/${PROJECT_NAME}_media_volume" 
-    "/srv/docker/${PROJECT_NAME}_logs_volume" 
+    "/srv/docker/${PROJECT_NAME}/staticfiles" 
+    "/srv/docker/${PROJECT_NAME}/media" 
+    "/srv/docker/${PROJECT_NAME}/logs" 
 )
 
 for path_directory in ${PATH_DIRECTORIES[@]}; do
