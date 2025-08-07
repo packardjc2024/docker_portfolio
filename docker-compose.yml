@@ -15,6 +15,7 @@ services:
         ipv4_address: 172.35.0.2
   web:
     build: ./web
+    user: "1000:1001"
     restart: always
     healthcheck:
       test: ["CMD", "python3", "manage.py", "check"]
