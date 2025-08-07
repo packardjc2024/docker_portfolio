@@ -197,44 +197,44 @@ else:
     CSP_FRAME_ANCESTORS = ("'self'",)
 
     #Logging
-    logger_path = os.path.join(BASE_DIR, 'logs', 'django_logs.txt')
-    LOGGING = {
-        'version': 1,
-        'disable_existing_loggers': False,
-        'formatters': {
-            'verbose': {
-                'format': "%(asctime)s:%(levelname)s:%(name)s:%(message)s"
-            },
-            'simple': {
-                'format': '%(levelname)s:%(message)s'
-            },
-        },
-        'handlers': {
-            'console': {
-                'level': 'INFO',
-                'class': 'logging.StreamHandler',
-                'formatter': 'simple'
-            },
-            'file': {
-                'level': 'INFO',
-                'class': 'logging.FileHandler',
-                'filename': logger_path,
-                'formatter': 'verbose'
-            },
-        },
-        'loggers': {
-            '': {
-                'handlers': ['console', 'file'],
-                'level': 'INFO',
-                'propagate': True,
-            },
-            'django.request': {
-                'handlers': ['console'],
-                'level': 'ERROR',
-                'propagate': False,
-            },
-        }
-    }
+    # logger_path = os.path.join(BASE_DIR, 'logs', 'django_logs.txt')
+    # LOGGING = {
+    #     'version': 1,
+    #     'disable_existing_loggers': False,
+    #     'formatters': {
+    #         'verbose': {
+    #             'format': "%(asctime)s:%(levelname)s:%(name)s:%(message)s"
+    #         },
+    #         'simple': {
+    #             'format': '%(levelname)s:%(message)s'
+    #         },
+    #     },
+    #     'handlers': {
+    #         'console': {
+    #             'level': 'INFO',
+    #             'class': 'logging.StreamHandler',
+    #             'formatter': 'simple'
+    #         },
+    #         'file': {
+    #             'level': 'INFO',
+    #             'class': 'logging.FileHandler',
+    #             'filename': logger_path,
+    #             'formatter': 'verbose'
+    #         },
+    #     },
+    #     'loggers': {
+    #         '': {
+    #             'handlers': ['console', 'file'],
+    #             'level': 'INFO',
+    #             'propagate': True,
+    #         },
+    #         'django.request': {
+    #             'handlers': ['console'],
+    #             'level': 'ERROR',
+    #             'propagate': False,
+    #         },
+    #     }
+    # }
 
 
 EMAIL_PORT = int(decrypt_string(os.getenv('EMAIL_PORT'), DECRYPTION_KEY))
