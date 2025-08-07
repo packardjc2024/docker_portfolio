@@ -11,6 +11,11 @@ for dir in "${VOLUMES[@]}"; do
     mkdir -p "$dir"
     chmod -R g+rwX "$dir"
 done
+
+LOG_FILE="/app/logs/django_logs.txt"
+touch "$LOG_FILE"
+chown root:staticgroup "$LOG_FILE"
+chmod g+rw "$LOG_FILE"
 # Testing
 
 # Collect static files
