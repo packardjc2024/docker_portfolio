@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Testing
-chown -R root:www-data /app/statifiles
-chown -R o+rx /appa/staticfiles
+chown -R root:www-data /app/staticfiles
+chmod -R o+rx /app/staticfiles
 # Testing
 
 # Collect static files
