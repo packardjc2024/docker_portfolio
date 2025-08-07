@@ -1,6 +1,9 @@
 #!/bin/bash
 
-# Testing
+# Change permissions of volumes inside container
+# Will be copied over to host server
+# Just make sure host container has permissions through
+# /var/lib/docker/volumes
 VOLUMES=(
     "/app/staticfiles"
     "/app/media"
@@ -11,12 +14,6 @@ for dir in "${VOLUMES[@]}"; do
     mkdir -p "$dir"
     chmod -R g+rwX "$dir"
 done
-
-# LOG_FILE="/app/logs/django_logs.txt"
-# touch "$LOG_FILE"
-# chown root:staticgroup "$LOG_FILE"
-# chmod g+rw "$LOG_FILE"
-# Testing
 
 # Collect static files
 python3 manage.py collectstatic --noinput
