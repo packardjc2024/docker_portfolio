@@ -12,7 +12,7 @@ VOLUMES=(
 
 for dir in "${VOLUMES[@]}"; do
     mkdir -p "$dir"
-    chmod -R g+rwX "$dir"
+    # chmod -R g+rwX "$dir"
 done
 
 touch /app/logs/django_logs.txt
