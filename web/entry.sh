@@ -9,7 +9,6 @@ VOLUMES=(
 
 for dir in "${VOLUMES[@]}"; do
     mkdir -p "$dir"
-    chown -R root:www-data "$dir"
     chmod -R g+rwX "$dir"
 done
 # Testing
