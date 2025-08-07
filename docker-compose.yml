@@ -35,6 +35,9 @@ services:
       docker_portfolio_network:
         ipv4_address: 172.35.0.3
 
+volumes:
+  postgres_data:
+
 networks:
   docker_portfolio_network:
     driver: bridge
