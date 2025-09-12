@@ -32,8 +32,8 @@ def index(request):
         {
             'header': 'Work Experience',
             'text': (
-                "<ul><li>7 years - Overseas both working for a non-profit"
-                "and running a business</li>"
+                "<ul><li>2 years - Teaching English as a second language</li>"
+                "<li>5 years - Helped start and run a tourism business</li>"
                 "<li>5 years - Firefighter/EMT</li>"
                 "<li>4 months - Technical Services Analyst (SQL)</li></ul>"
             )
@@ -41,7 +41,7 @@ def index(request):
         {
             'header': 'Education',
             'text': (
-                "<ul><li>B.A Internation Studies</li>"
+                "<ul><li>B.A International Studies</li>"
                 "<li>Software Developer Using Python - Community College "
                 "non-degree career course</li>"
                 "<li>Certiport IT Specialist in Python</li>"
