@@ -85,6 +85,29 @@ def index(request):
     # Project section cards
     context['projects'] = [
         {
+        'name': 'Django Template',
+        'img_url': '',
+        'text': (
+            "Template for easily starting a new Django Web App. "
+            "framework and PostgreSQL in Docker containers. "
+            "It is running on an Ubuntu server using Nginx."
+        ),
+        'github_link': 'https://github.com/packardjc2024/django_template',
+        'project_link': "#",
+        'alt': 'None',
+        },
+        {
+        'name': 'Weather App',
+        'img_url': 'site_pictures/weather_logo.png',
+        'text': (
+            "A weather App for getting temps for 7 days. "
+            "Uses Zippopotam and Open-Meteo APIs "
+        ),
+        'github_link': 'https://github.com/packardjc2024/weather',
+        'project_link': "https://weather.programmingondemand.com",
+        'alt': 'Weather Logo',
+        },
+        {
         'name': 'Portfolio',
         'img_url': 'site_pictures/portfolio_screenshot.png',
         'text': (
