@@ -86,15 +86,15 @@ def index(request):
     context['projects'] = [
         {
         'name': 'Django Template',
-        'img_url': '',
+        'img_url': 'site_pictures/django_logo.png',
         'text': (
             "Template for easily starting a new Django Web App. "
             "framework and PostgreSQL in Docker containers. "
             "It is running on an Ubuntu server using Nginx."
         ),
         'github_link': 'https://github.com/packardjc2024/django_template',
-        'project_link': "#",
-        'alt': 'None',
+        'project_link': False,
+        'alt': 'Django Logo',
         },
         {
         'name': 'Weather App',
@@ -116,7 +116,7 @@ def index(request):
             "It is running on an Ubuntu server using Nginx."
         ),
         'github_link': 'https://github.com/packardjc2024/docker_portfolio',
-        'project_link': "#",
+        'project_link': '#',
         'alt': 'Portofolio Screenshot',
         },
         {
@@ -133,16 +133,16 @@ def index(request):
         'project_link': False,
         'alt': 'Docker Setup Screenshot',
         },
-        {
-        'name': "CSVQL",
-        'img_url': '/site_pictures/csvql.png',
-        'text': (
-            "Coming Soon..."
-        ),
-        'github_link': '',
-        'project_link': '',
-        'alt': 'CSVQL Screenshot',
-        },
+        # {
+        # 'name': "CSVQL",
+        # 'img_url': '/site_pictures/csvql.png',
+        # 'text': (
+        #     "Coming Soon..."
+        # ),
+        # 'github_link': '',
+        # 'project_link': '',
+        # 'alt': 'CSVQL Screenshot',
+        # },
     ]
 
     # Handle requestes and serve html files
