@@ -85,6 +85,18 @@ def index(request):
     # Project section cards
     context['projects'] = [
         {
+        'name': 'Chatbot',
+        'img_url': 'site_pictures/chatbot.png',
+        'text': (
+            "A desktop chatbot app using gemma3's offline model. "
+            "framework and PostgreSQL in Docker containers. "
+            "It is running on an Ubuntu server using Nginx."
+        ),
+        'github_link': 'https://github.com/packardjc2024/chatbot',
+        'project_link': False,
+        'alt': 'Chatbot Logo',
+        },
+        {
         'name': 'Django Template',
         'img_url': 'site_pictures/django_logo.png',
         'text': (
