@@ -85,7 +85,7 @@ def index(request):
     # Project section cards
     context['projects'] = [
         {
-        'name': 'Chatbot',
+        'name': 'Desktop Chatbot',
         'img_url': 'site_pictures/chatbot.png',
         'text': (
             "A desktop chatbot app using gemma3's offline model. "
@@ -106,6 +106,17 @@ def index(request):
         ),
         'github_link': 'https://github.com/packardjc2024/django_template',
         'project_link': False,
+        'alt': 'Django Logo',
+        },
+                {
+        'name': 'Web ChatBot',
+        'img_url': 'site_pictures/django_logo.png',
+        'text': (
+            "A chatbot that uses Gemma 3 model on google's servers "
+            "accessed using genai library."
+        ),
+        'github_link': 'https://github.com/packardjc2024/django_chatbot',
+        'project_link': 'https://chatbot.programmingondemand.com',
         'alt': 'Django Logo',
         },
         {
