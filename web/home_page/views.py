@@ -120,6 +120,18 @@ def index(request):
         'alt': 'Weather Logo',
         },
         {
+        'name': 'Website Builder',
+        'img_url': 'site_pictures/django_logo.png',
+        'text': (
+            "This project is currently in Progress and allows  "
+            "the user to build a website similar to wordpress, but. "
+            "uses Python/Django and PostgreSQL instead of PHP and MySQL."
+        ),
+        'github_link': 'https://github.com/packardjc2024/website_builder',
+        'project_link': 'https://website-builder.programmingondemand.com',
+        'alt': 'django logo',
+        },
+        {
         'name': 'Portfolio',
         'img_url': 'site_pictures/portfolio_screenshot.png',
         'text': (
