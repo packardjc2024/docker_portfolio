@@ -85,6 +85,18 @@ def index(request):
     # Project section cards
     context['projects'] = [
         {
+        'name': 'SQL AI',
+        'img_url': 'logos/back_end/postgres_logo.png',
+        'text': (
+            "Uses an offline Gemma3 model and LangChain "
+            "library to convert natural language searches "
+            "into SQL queries and return the results. "
+        ),
+        'github_link': 'https://github.com/packardjc2024/sql_ai',
+        'project_link': False,
+        'alt': 'PostgreSQL Logo',
+        },
+        {
         'name': 'Desktop Chatbot',
         'img_url': 'site_pictures/chatbot.png',
         'text': (
