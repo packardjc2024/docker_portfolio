@@ -10,11 +10,40 @@ import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from dotenv import load_dotenv
+import geocoder
+from datetime import date
+
+
+def get_user_info(request):
+    try:
+        data = request.META.get('HTTP_X_FORWARDED_FOR')
+        if data:
+            ip = data.split(',')[0].strip()
+        else:
+            ip = request.META.get('REMOTE_ADDR')
+        request.session['counted'] = True
+        geocode = geocoder.ip(ip)
+        city = geocode.city
+        state = geocode.state
+        country = geocode.country
+        visitor = Visitor(
+            ip_address=ip,
+            city=city,
+            state=state,
+            country=country,
+            date=date.today()
+        )
+        visitor.save()
+    except:
+        print('\n\nERROR: Could not get ip addresss\n\n')
 
 # Create your views here.
 def index(request):
     context = {}
     context['form_submitted'] = False
+
+    if 'counted' not in request.session:
+        get_user_info(request)
 
     # About Section cards
     context['about_cards'] = []

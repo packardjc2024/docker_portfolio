@@ -12,3 +12,11 @@ class Contact(models.Model):
     phone_number = models.CharField(blank=True, null=True)
     email = models.EmailField(blank=False, null=False)
     comments = models.TextField(blank=False, null=False, default=default_message)
+
+
+class Visitor(models.Model):
+    ip_address = models.CharField()
+    city = models.CharField()
+    state = models.CharField()
+    country = models.CharField()
+    date = models.DateField()
