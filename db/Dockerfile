@@ -1,5 +1,5 @@
 # Pull Python Image
-FROM postgres:latest
+FROM postgres:17
 
 # Update packages
 RUN apt-get update && apt-get install -y postgresql-client nano curl
